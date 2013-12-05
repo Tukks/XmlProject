@@ -14,19 +14,25 @@ import java.io.IOException;
  */
 public class Query {
 
-    public static void main(final String[] args) {
+    public Query() {
+        super();
+    }
+
+    public String hotel() {
+        String result = "";
+
         try {
             // create session
-            final BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin");
+            BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin");
 
             try {
                 // create query instance
-                final String input = "for $project in doc('data/entries_hotels.xml') /entries/entry/name_fr return $project";
-                final BaseXClient.Query query = session.query(input);
-
+                String input = "for $project in doc('data/entries_hotels.xml') /entries/entry/name_fr return $project";
+                BaseXClient.Query query = session.query(input);
+                
                 // loop through all results
                 while (query.more()) {
-                    System.out.println(query.next());
+                    result = result + query.next() +"\n";
                 }
 
                 // print query info
@@ -47,5 +53,12 @@ public class Query {
             // print exception
             ex.printStackTrace();
         }
+
+        return result;
+    }
+
+    public static void main(final String[] args) {
+        Query q = new Query();
+        System.out.println(q.hotel());
     }
 }
