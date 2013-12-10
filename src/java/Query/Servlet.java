@@ -54,7 +54,7 @@ public class Servlet extends HttpServlet {
             TransformerFactory tFactory = TransformerFactory.newInstance();
             // Create a reusable templates for a particular stylesheet
             String filePath = webApp.getRealPath(this.getInitParameter(XSLT_NAME));
-            Templates templates = tFactory.newTemplates(new StreamSource(filePath));
+            Templates templates = tFactory.newTemplates(new StreamSource(filePath)); //Pb...
             // Register the transformer to the Web app
             webApp.setAttribute(XSLT_NAME, templates);
 
@@ -150,6 +150,7 @@ public class Servlet extends HttpServlet {
 
     /**
      * Returns a short description of the servlet.
+     * @return 
      */
     @Override
     public String getServletInfo() {
