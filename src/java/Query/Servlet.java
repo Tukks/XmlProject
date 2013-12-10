@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Query;
 
 import java.io.ByteArrayOutputStream;
@@ -15,32 +10,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 /**
+ * A servlet to display the animals.
  *
- * @author MoMo
+ * @author Philippe Poulard
+ * @version
  */
 public class Servlet extends HttpServlet {
 
-    public String XSLT_NAME = "XML/";
-    public String XML_NAME = "XML/entrier_hotels.xml";
-    public String HTML_RESULT = "htmlResult";
+    public final static String /**
+             * The path to the stylesheet.
+             */
+            XSLT_PATH = "XML/hotels.xsl",
+            /**
+             * The path to the XML doc.
+             */
+            XML_PATH = "XML/hotels.xml",
+            /**
+             * The name of the HTML stream.
+             */
+            HTML_RESULT = "htmlResult";
 
     /**
      * Initializes the servlet.
-     *
      * @param config
      * @throws javax.servlet.ServletException
      */
@@ -53,10 +55,10 @@ public class Servlet extends HttpServlet {
             // Get concrete implementation
             TransformerFactory tFactory = TransformerFactory.newInstance();
             // Create a reusable templates for a particular stylesheet
-            String filePath = webApp.getRealPath(this.getInitParameter(XSLT_NAME));
-            Templates templates = tFactory.newTemplates(new StreamSource(filePath)); //Pb...
+            String filePath = webApp.getRealPath(XSLT_PATH);
+            Templates templates = tFactory.newTemplates(new StreamSource(filePath));
             // Register the transformer to the Web app
-            webApp.setAttribute(XSLT_NAME, templates);
+            webApp.setAttribute(XSLT_PATH, templates);
 
             // Get concrete implementation
             DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
@@ -65,17 +67,11 @@ public class Servlet extends HttpServlet {
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
             // Parse the XML document
-            filePath = webApp.getRealPath(this.getInitParameter(XML_NAME));
+            filePath = webApp.getRealPath(XML_PATH);
             Document doc = parser.parse(filePath);
             // Register the XML doc to the Web app
-            webApp.setAttribute(XML_NAME, new DOMSource(doc));
-        } catch (TransformerConfigurationException ex) {
-            throw new ServletException(ex);
-        } catch (ParserConfigurationException ex) {
-            throw new ServletException(ex);
-        } catch (SAXException ex) {
-            throw new ServletException(ex);
-        } catch (IOException ex) {
+            webApp.setAttribute(XML_PATH, new DOMSource(doc));
+        } catch (Exception ex) {
             throw new ServletException(ex);
         }
     }
@@ -94,7 +90,7 @@ public class Servlet extends HttpServlet {
 
         try {
             // Get the registered transformer
-            Templates templates = (Templates) webApp.getAttribute(XSLT_NAME);
+            Templates templates = (Templates) webApp.getAttribute(XSLT_PATH);
             // Create a transformer
             Transformer transformer = templates.newTransformer();
 
@@ -102,8 +98,13 @@ public class Servlet extends HttpServlet {
             ByteArrayOutputStream htmlStreamResult = new ByteArrayOutputStream();
 
             // Get the registered XML source
-            Source xmlSource = (Source) webApp.getAttribute(XML_NAME);
+            Source xmlSource = (Source) webApp.getAttribute(XML_PATH);
 
+            // Get the parameter to sort the list of animals
+            String sort = request.getParameter("liste-par-nom");
+            if (sort != null) {
+                transformer.setParameter("liste-par-nom", Boolean.TRUE);
+            }
             // Transform input XML doc in HTML stream
             transformer.transform(xmlSource, new StreamResult(htmlStreamResult));
 
@@ -124,7 +125,7 @@ public class Servlet extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param response servlet respon
+     * @param response servlet response
      * @throws javax.servlet.ServletException
      * @throws java.io.IOException
      */
@@ -154,7 +155,7 @@ public class Servlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Zoo";
+        return "Hotels";
     }
 
 }
