@@ -23,7 +23,7 @@ import org.w3c.dom.Document;
 /**
  * A servlet to display the animals.
  *
- * @author Philippe Poulard
+ * @author MoMo
  * @version
  */
 public class Servlet extends HttpServlet {
