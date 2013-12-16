@@ -10,8 +10,8 @@
     <head>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap-theme.min.css"></link>
         <script src="LIB/bootstrap/js/bootstrap.min.js"></script>
         <title>JSP Page</title>
         <style type="text/css">
@@ -35,7 +35,7 @@
         </script>
     </head>
     <body>
-    <%=request.getAttribute("htmlResult") %>
+    <%=session.getAttribute("htmlresult") %>
         <nav class="navbar navbar-default" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">

@@ -56,9 +56,4 @@ public class Query {
 
         return result;
     }
-
-    public static void main(final String[] args) {
-        Query q = new Query();
-        System.out.println(q.hotel());
-    }
 }

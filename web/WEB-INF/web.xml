@@ -4,9 +4,17 @@
         <servlet-name>Servlet</servlet-name>
         <servlet-class>Query.Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletJSP</servlet-name>
+        <servlet-class>Query.ServletJSP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletJSP</servlet-name>
+        <url-pattern>/ServletJSP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,8 +1,5 @@
 package Query;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,68 +10,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 
-/**
- * A servlet to display the animals.
- *
- * @author MoMo
- * @version
- */
 public class Servlet extends HttpServlet {
 
-    public final static String /**
-             * The path to the stylesheet.
-             */
-            XSLT_PATH = "XML/hotels.xsl",
-            /**
-             * The path to the XML doc.
-             */
-            XML_PATH = "XML/hotels.xml",
-            /**
-             * The name of the HTML stream.
-             */
-            HTML_RESULT = "htmlResult";
+    public String XSLT_PATH = "XML/hotels.xsl";
 
-    /**
-     * Initializes the servlet.
-     * @param config
-     * @throws javax.servlet.ServletException
-     */
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        ServletContext webApp = this.getServletContext();
-
-        try {
-            // Get concrete implementation
-            TransformerFactory tFactory = TransformerFactory.newInstance();
-            // Create a reusable templates for a particular stylesheet
-            String filePath = webApp.getRealPath(XSLT_PATH);
-            Templates templates = tFactory.newTemplates(new StreamSource(filePath));
-            // Register the transformer to the Web app
-            webApp.setAttribute(XSLT_PATH, templates);
-
-            // Get concrete implementation
-            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
-            // Need a parser that support namespaces
-            dFactory.setNamespaceAware(true);
-            // Create the parser
-            DocumentBuilder parser = dFactory.newDocumentBuilder();
-            // Parse the XML document
-            filePath = webApp.getRealPath(XML_PATH);
-            Document doc = parser.parse(filePath);
-            // Register the XML doc to the Web app
-            webApp.setAttribute(XML_PATH, new DOMSource(doc));
-        } catch (Exception ex) {
-            throw new ServletException(ex);
-        }
-    }
+    public String XML_PATH = "XML/hotels.xml";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -89,34 +35,29 @@ public class Servlet extends HttpServlet {
         ServletContext webApp = this.getServletContext();
 
         try {
-            // Get the registered transformer
-            Templates templates = (Templates) webApp.getAttribute(XSLT_PATH);
+            // Get concrete implementation
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+            // Create a reusable templates for a particular stylesheet
+            Templates templates = tFactory.newTemplates(new StreamSource(webApp.getRealPath(XSLT_PATH)));
             // Create a transformer
             Transformer transformer = templates.newTransformer();
 
-            // Create the stream that will receive the result of the transformation
-            ByteArrayOutputStream htmlStreamResult = new ByteArrayOutputStream();
+            // Get concrete implementation
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
+            // Need a parser that support namespaces
+            dFactory.setNamespaceAware(true);
+            // Create the parser
+            DocumentBuilder parser = dFactory.newDocumentBuilder();
+            // Parse the XML document
+            Document doc = parser.parse(new Query().hotel());
+            // Get the XML source
+            Source xmlSource = new DOMSource();
 
-            // Get the registered XML source
-            Source xmlSource = (Source) webApp.getAttribute(XML_PATH);
-
-            // Get the parameter to sort the list of animals
-            String sort = request.getParameter("liste-par-nom");
-            if (sort != null) {
-                transformer.setParameter("liste-par-nom", Boolean.TRUE);
-            }
+            response.setContentType("text/html");
             // Transform input XML doc in HTML stream
-            transformer.transform(xmlSource, new StreamResult(htmlStreamResult));
-
-            // Forward to the JSP
-            request.setAttribute(HTML_RESULT, htmlStreamResult);
-            webApp.getRequestDispatcher("/index.jsp").forward(request, response);
-
-        } catch (IOException ex) {
-            throw new ServletException(ex);
-        } catch (ServletException ex) {
-            throw new ServletException(ex);
-        } catch (TransformerException ex) {
+            transformer.transform(xmlSource, new StreamResult(response.getWriter()));
+            
+        } catch (Exception ex) {
             throw new ServletException(ex);
         }
     }
@@ -151,11 +92,11 @@ public class Servlet extends HttpServlet {
 
     /**
      * Returns a short description of the servlet.
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getServletInfo() {
-        return "Hotels";
+        return "XSLT";
     }
-
 }
