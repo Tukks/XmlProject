@@ -108,6 +108,6 @@ public class ServletHotel extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "XSLT";
+        return "Hotels";
     }
 }

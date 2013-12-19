@@ -4,18 +4,24 @@
         <servlet-name>ServletHotel</servlet-name>
         <servlet-class>Servlet.ServletHotel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletMaps</servlet-name>
+        <servlet-class>Servlet.ServletMaps</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletMaps</servlet-name>
+        <url-pattern>/ServletMaps</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletHotel</servlet-name>
         <url-pattern>/index.html</url-pattern>
     </servlet-mapping>
-    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
-    </welcome-file-list>   
+    </welcome-file-list>
 </web-app>

@@ -33,7 +33,35 @@ public class Query {
             while (query.more()) {
                 result = result + query.next() + "\n";
             }
-            
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+    }
+
+    public String maps() throws IOException {
+        String result = "";
+
+        try {
+            // create query instance
+            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry/latitude return data($var)";
+            //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
             // close query instance
             query.close();
 

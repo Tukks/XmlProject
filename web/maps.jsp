@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Google Maps Api v3</title>
+        <title>Maps hotels</title>
     </head>
     <style type="text/css">
         #container{position:relative;width:990px;margin:auto;}
@@ -24,8 +24,8 @@
 
         <!-- Include Javascript -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
-        <script type="text/javascript" src="./js/mapsInit.js"> //A mettre dans mapsInit, un jour 
-           
-        </script>
+        <script type="text/javascript" src="js/maps-init.js">//A mettre dans mapsInit, un jour</script>
+             
+        <%=session.getAttribute("mapsresult") %>
     </body>
 </html>
