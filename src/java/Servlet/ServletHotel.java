@@ -22,7 +22,7 @@ import org.xml.sax.InputSource;
 
 public class ServletHotel extends HttpServlet {
 
-    public String XSLT_NAME = "XML/hotels.xsl";
+    public String XSLT_NAME = "xslt/hotels.xsl";
     
     public String HTML_RESULT = "htmlresult";
     /**

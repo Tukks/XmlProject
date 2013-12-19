@@ -10,9 +10,9 @@
     <head>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap.min.css"></link>
-        <link rel="stylesheet" href="LIB/bootstrap/css/bootstrap-theme.min.css"></link>
-        <script src="LIB/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css"></link>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
         <title>Index hotellier</title>
     </head>
     <body>
