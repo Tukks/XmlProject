@@ -24,7 +24,7 @@
 
         <!-- Include Javascript -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
-        <script type="text/javascript" src="./mapsInit.js"> //A mettre dans mapsInit, un jour 
+        <script type="text/javascript" src="./js/mapsInit.js"> //A mettre dans mapsInit, un jour 
            
         </script>
     </body>
