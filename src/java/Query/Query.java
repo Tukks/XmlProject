@@ -14,45 +14,36 @@ import java.io.IOException;
  */
 public class Query {
 
-    public Query() {
+    private final BaseXClient session;
+
+    public Query() throws IOException {
         super();
+        this.session = new BaseXClient("localhost", 1984, "admin", "admin");
     }
 
-    public String hotel() {
+    public String hotel() throws IOException {
         String result = "";
 
         try {
-            // create session
-            BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin");
+            // create query instance
+            String input = "for $hotel in doc('data/entries_hotels.xml') return $hotel";
+            BaseXClient.Query query = session.query(input);
 
-            try {
-                // create query instance
-                String input = "for $project in doc('data/entries_hotels.xml') /entries/entry/name_fr return $project";
-                BaseXClient.Query query = session.query(input);
-                
-                // loop through all results
-                while (query.more()) {
-                    result = result + query.next() +"\n";
-                }
-
-                // print query info
-                System.out.println(query.info());
-
-                // close query instance
-                query.close();
-
-            } catch (final IOException ex) {
-                // print exception
-                ex.printStackTrace();
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
             }
-
-            // close session
-            session.close();
+            
+            // close query instance
+            query.close();
 
         } catch (final IOException ex) {
             // print exception
             ex.printStackTrace();
         }
+
+        // close session
+        this.session.close();
 
         return result;
     }

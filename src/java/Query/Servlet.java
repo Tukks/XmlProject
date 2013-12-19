@@ -1,10 +1,13 @@
 package Query;
 
+import java.io.StringReader;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
@@ -15,13 +18,11 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
 public class Servlet extends HttpServlet {
 
-    public String XSLT_PATH = "XML/hotels.xsl";
-
-    public String XML_PATH = "XML/hotels.xml";
-
+    public String XSLT_NAME = "XML/hotels.xsl";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,7 +39,7 @@ public class Servlet extends HttpServlet {
             // Get concrete implementation
             TransformerFactory tFactory = TransformerFactory.newInstance();
             // Create a reusable templates for a particular stylesheet
-            Templates templates = tFactory.newTemplates(new StreamSource(webApp.getRealPath(XSLT_PATH)));
+            Templates templates = tFactory.newTemplates(new StreamSource(webApp.getRealPath(XSLT_NAME)));
             // Create a transformer
             Transformer transformer = templates.newTransformer();
 
@@ -48,14 +49,23 @@ public class Servlet extends HttpServlet {
             dFactory.setNamespaceAware(true);
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
+            InputSource is = new InputSource(new StringReader(new Query().hotel()));
             // Parse the XML document
-            Document doc = parser.parse(new Query().hotel());
+            Document doc = parser.parse(is);
             // Get the XML source
-            Source xmlSource = new DOMSource();
+            Source xmlSource = new DOMSource(doc);
 
             response.setContentType("text/html");
             // Transform input XML doc in HTML stream
             transformer.transform(xmlSource, new StreamResult(response.getWriter()));
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("htmlresult", new Query().hotel());            
+            
+            RequestDispatcher dispatcher = webApp.getRequestDispatcher("/index.jsp");
+            
+            response.setContentType("text/html");
+            dispatcher.forward(request, response);
             
         } catch (Exception ex) {
             throw new ServletException(ex);
