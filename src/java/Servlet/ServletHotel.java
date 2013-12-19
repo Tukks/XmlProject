@@ -1,5 +1,6 @@
-package Query;
+package Servlet;
 
+import Query.Query;
 import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
 import javax.servlet.ServletContext;
@@ -19,7 +20,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-public class Servlet extends HttpServlet {
+public class ServletHotel extends HttpServlet {
 
     public String XSLT_NAME = "XML/hotels.xsl";
     
@@ -107,6 +108,6 @@ public class Servlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "TableauHotels";
+        return "XSLT";
     }
 }

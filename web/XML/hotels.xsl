@@ -4,13 +4,7 @@
     <xsl:output method="html"/>
 
     <xsl:template match="/">
-        <html>
-            <head>
-                <title>Hotels</title>
-                <link rel="stylesheet" href="../LIB/bootstrap/css/bootstrap.min.css"></link>
-                <link rel="stylesheet" href="../LIB/bootstrap/css/bootstrap-theme.min.css"></link>
-            </head>
-            <body>
+       
                 <table class="table">
                     <tr>
                         <td>Nom des hotels</td>
@@ -31,8 +25,7 @@
                         </tr>
                     </xsl:for-each>
                 </table>
-            </body>
-        </html>
+         
     </xsl:template>
 
 </xsl:stylesheet>
