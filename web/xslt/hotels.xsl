@@ -4,28 +4,32 @@
     <xsl:output method="html"/>
 
     <xsl:template match="/">
-       
-                <table class="table">
+
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+            <thead>
+                <tr>
+                    <th>Nom des hotels</th>
+                    <th>Adresse</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <xsl:for-each select="entries/entry">
                     <tr>
-                        <td>Nom des hotels</td>
-                        <td>Adresse</td>
-                        <td>Phone</td>
+                        <td>
+                            <xsl:value-of select="name_fr"/>                                
+                        </td>
+                        <td>
+                            <xsl:value-of select="address"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="phone"/>
+                        </td>
                     </tr>
-                    <xsl:for-each select="entries/entry">
-                        <tr>
-                            <td>
-                                <xsl:value-of select="name_fr"/>                                
-                            </td>
-                            <td>
-                                <xsl:value-of select="address"/>
-                            </td>
-                            <td>
-                                <xsl:value-of select="phone"/>
-                            </td>
-                        </tr>
-                    </xsl:for-each>
-                </table>
-         
+                </xsl:for-each>
+            </tbody>
+        </table>
+   
     </xsl:template>
 
 </xsl:stylesheet>
