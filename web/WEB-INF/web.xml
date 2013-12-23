@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletMaps</servlet-name>
-        <url-pattern>/ServletMaps</url-pattern>
+        <url-pattern>/maps.html</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletHotel</servlet-name>

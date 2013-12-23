@@ -11,6 +11,7 @@
                     <th>Nom des hotels</th>
                     <th>Adresse</th>
                     <th>Phone</th>
+                    <th>Classification</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,9 @@
                         </td>
                         <td>
                             <xsl:value-of select="phone"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="standings_levels"/>
                         </td>
                     </tr>
                 </xsl:for-each>

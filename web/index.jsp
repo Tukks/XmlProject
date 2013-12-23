@@ -15,10 +15,6 @@
         <link rel="shortcut icon" type="image/ico" href="" />
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
-
-        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
-        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
     </head>
     <body>
         <div class="navbar">
@@ -26,17 +22,19 @@
                 <a class="brand" href="#">Hotels</a>
                 <ul class="nav">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="maps.jsp">Maps</a></li>
+                    <li><a href="maps.html">Maps</a></li>
                     <li><a href="#">SVG</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="container" style="margin-top: 10px">
+        <div class="container" style="margin-top: 10px; font-size: 13px;">
             <%=request.getAttribute("htmlresult")%>
         </div>
-    </body>
-</html>
 
-</body>
+        <!-- Include Javascript -->
+        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
+    </body>
 </html>
