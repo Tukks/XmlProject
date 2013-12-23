@@ -17,19 +17,28 @@
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
     </head>
     <body>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="#">Hotels</a>
-                <ul class="nav">
+        <div class="container">
+
+            <div>
+                <ul class="nav nav-pills pull-right">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="maps.html">Maps</a></li>
                     <li><a href="#">SVG</a></li>
                 </ul>
+                <h3 class="muted">Project XML</h3>
             </div>
-        </div>
 
-        <div class="container" style="margin-top: 10px; font-size: 13px;">
-            <%=request.getAttribute("htmlresult")%>
+            <hr>
+
+            <div style="margin-top: 10px; font-size: 13px">
+                <%=request.getAttribute("htmlresult")%>
+            </div>
+
+            <hr>
+
+            <div class="footer">
+                <p>&copy; MIAGE 2013</p>
+            </div>
         </div>
 
         <!-- Include Javascript -->

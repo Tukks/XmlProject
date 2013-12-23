@@ -19,24 +19,32 @@
     </style>
     <body>
 
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="#">Hotels</a>
-                <ul class="nav">
+        <div class="container">
+
+            <div>
+                <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="maps.html">Maps</a></li>
+                    <li  class="active"><a href="maps.html">Maps</a></li>
                     <li><a href="#">SVG</a></li>
                 </ul>
+                <h3 class="muted">Project XML</h3>
+            </div>
+
+            <hr>
+            <div id="cadre">
+                <div id="map">
+                    <p>Veuillez patienter pendant le chargement de la carte...</p>
+                </div>
+            </div>
+
+            <%=session.getAttribute("mapsresult")%>
+
+            <hr>
+
+            <div class="footer">
+                <p>&copy; MIAGE 2013</p>
             </div>
         </div>
-        <div id="cadre">
-            <div id="map">
-                <p>Veuillez patienter pendant le chargement de la carte...</p>
-            </div>
-        </div>
-
-        <%=session.getAttribute("mapsresult")%>
-
         <!-- Include Javascript -->
         <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
