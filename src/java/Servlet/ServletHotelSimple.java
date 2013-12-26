@@ -86,6 +86,7 @@ public class ServletHotelSimple extends HttpServlet {
         }
     }
 
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *

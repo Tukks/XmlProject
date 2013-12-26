@@ -20,6 +20,7 @@
                 <title>hotel.xsl</title>
             </head>
             <body>
+                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
                 <div id="nom">
                 <tr>
                     <td>
@@ -278,7 +279,7 @@
                     <xsl:value-of select="updated"/> 
                 </div>
              
-                                       
+                </table>                        
             </body>
         </html>
     </xsl:template>

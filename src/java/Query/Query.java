@@ -63,6 +63,7 @@ public class Query {
             }
 
             // close query instance
+            
             query.close();
 
         } catch (final IOException ex) {

@@ -29,11 +29,9 @@
                 <h3 class="muted">Project XML</h3>
             </div>
 
-            <hr>
-
+           
             <%=request.getAttribute("hotelresult")%>
 
-            <hr>
 
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
