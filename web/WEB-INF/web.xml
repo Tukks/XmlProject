@@ -8,6 +8,10 @@
         <servlet-name>ServletMaps</servlet-name>
         <servlet-class>Servlet.ServletMaps</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletHotelSimple</servlet-name>
+        <servlet-class>Servlet.ServletHotelSimple</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletMaps</servlet-name>
         <url-pattern>/maps.html</url-pattern>
@@ -16,12 +20,20 @@
         <servlet-name>ServletHotel</servlet-name>
         <url-pattern>/index.html</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+         <servlet-name>ServletHotelSimple</servlet-name>
+         <url-pattern>/hotel.html</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
+            
+            
         </session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    
 </web-app>
+

@@ -63,6 +63,7 @@ public class Query {
             }
 
             // close query instance
+            
             query.close();
 
         } catch (final IOException ex) {
@@ -74,5 +75,39 @@ public class Query {
         this.session.close();
 
         return result;
+    }
+    
+    /**
+     * Prend l'ID d'un hotel et retourne toute les infos associées
+     * @param id l'id de l'hotel
+     * @return toute les infos de de l'hotel 
+     */
+    public String hotelById(String id) throws IOException
+    {
+       String result = "";
+
+        try {
+            // create query instance
+            String input = "for $hotel in doc('data/entries_hotels.xml')/entries/entry where $hotel/ID = " + id + " return $hotel";
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+        
     }
 }
