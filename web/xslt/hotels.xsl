@@ -12,6 +12,7 @@
                     <th>Adresse</th>
                     <th>Phone</th>
                     <th>Classification</th>
+                    <th>Lien</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,11 @@
                         </td>
                         <td>
                             <xsl:value-of select="standings_levels"/>
+                        </td>
+                        <td>
+                            <html>
+                                <a href ="hotel.html?hotel={ID}"><xsl:value-of select="name_fr"/></a>
+                            </html>
                         </td>
                     </tr>
                 </xsl:for-each>
