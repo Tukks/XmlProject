@@ -3,9 +3,10 @@
     position:relative;width:990px;margin:auto;
 }
 #cadre #map{
-    width:500px;height:500px;margin:auto;
+    width:600px;height:550px;margin:auto;
 }
 
+/** DataTables **/
 div.dataTables_length label {
     float: left;
     text-align: left;

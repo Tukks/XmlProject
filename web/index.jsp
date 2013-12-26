@@ -29,6 +29,27 @@
             </div>
 
             <hr>
+            <form class="form-inline">
+                <div class="control-group">
+                <label>Classification :</label>
+
+                <select class="span2">
+                    <option>1 étoile</option>
+                    <option>2 étoiles</option>
+                    <option>3 étoiles</option>
+                    <option>4 étoiles</option>
+                    <option>5 étoiles</option>
+                </select> 
+
+                <label>Prix :</label>
+
+                <input type="text" id="min" placeholder="Min" class="span2">
+
+                <label class=>entre :</label>
+
+                <input type="text" id="max" placeholder="Max" class="span2">
+                </div>
+            </form>
 
             <div style="margin-top: 10px; font-size: 13px">
                 <%=request.getAttribute("htmlresult")%>
