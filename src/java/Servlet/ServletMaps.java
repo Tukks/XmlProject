@@ -21,7 +21,8 @@ import javax.servlet.http.HttpSession;
  */
 public class ServletMaps extends HttpServlet {
 
-    public String MAPS_RESULT = "mapsresult";
+    public String LATITUDE_RESULT = "latituderesult";
+        public String LONGITUDE_RESULT = "longituderesult";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +40,22 @@ public class ServletMaps extends HttpServlet {
         try {
             
             HttpSession session = request.getSession();
-            session.setAttribute("mapsresult", new Query().maps());            
+           
+            String latitudeQuery = new Query().latitudeMaps(); 
+            String[] latitudeS = latitudeQuery.split("\\s");
+            float[] latitude = new float[latitudeS.length];
+            for(int i = 0; i<latitudeS.length; i++){
+                latitude[i] = Float.parseFloat(latitudeS[i]);
+            }
+            String longitudeQuery = new Query().longitudeMaps();
+            String[] longitudeS = longitudeQuery.split("\\s");
+            float[] longitude = new float[longitudeS.length];
+            for(int i = 0; i<longitudeS.length; i++){
+                longitude[i] = Float.parseFloat(longitudeS[i]);
+            }
+            session.setAttribute("latituderesult", latitude);  
+            session.setAttribute("longituderesult", longitude);
+                
             
             RequestDispatcher dispatcher = webApp.getRequestDispatcher("/maps.jsp");
             
