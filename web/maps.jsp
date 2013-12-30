@@ -37,7 +37,6 @@
                 </div>
             </div>
 
-            <%=session.getAttribute("mapsresult")%>
 
             <hr>
 
@@ -49,5 +48,27 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="js/maps.js"></script>
+        <script language="javascript">
+            var latitude = new Array();
+            <% float[] latitudeJava = (float[]) session.getAttribute("latituderesult");
+
+                   for (int i = 0; i < latitudeJava.length; i++) {%>
+            var tmp = '<%= latitudeJava[i]%>';           //--> without this doesnt work
+            latitude[<%= i%>] = tmp;
+            <%}
+            %>
+
+            var longitude = new Array();
+            <% float[] longitudeJava = (float[]) session.getAttribute("longituderesult");
+
+                   for (int i = 0; i < longitudeJava.length; i++) {%>
+            var tmp = '<%= longitudeJava[i]%>';           //--> without this doesnt work
+            longitude[<%= i%>] = tmp;
+            <%}
+            %>
+
+            init(latitude, longitude);
+        </script>
+
     </body>
 </html>
