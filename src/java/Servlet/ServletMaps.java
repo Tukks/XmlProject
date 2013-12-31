@@ -22,8 +22,9 @@ import javax.servlet.http.HttpSession;
 public class ServletMaps extends HttpServlet {
 
     public String LATITUDE_RESULT = "latituderesult";
-        public String LONGITUDE_RESULT = "longituderesult";
-public String HOTEL_INFO = "hotelinfo";
+    public String LONGITUDE_RESULT = "longituderesult";
+    public String HOTEL_INFO = "hotelinfo";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,30 +39,30 @@ public String HOTEL_INFO = "hotelinfo";
         ServletContext webApp = this.getServletContext();
 
         try {
-            
+
             HttpSession session = request.getSession();
-           
-            String latitudeQuery = new Query().latitudeMaps(); 
+
+            String latitudeQuery = new Query().latitudeMaps();
             String[] latitudeS = latitudeQuery.split("\\s");
             float[] latitude = new float[latitudeS.length];
-            for(int i = 0; i<latitudeS.length; i++){
+            for (int i = 0; i < latitudeS.length; i++) {
                 latitude[i] = Float.parseFloat(latitudeS[i]);
             }
             String longitudeQuery = new Query().longitudeMaps();
             String[] longitudeS = longitudeQuery.split("\\s");
             float[] longitude = new float[longitudeS.length];
-            for(int i = 0; i<longitudeS.length; i++){
+            for (int i = 0; i < longitudeS.length; i++) {
                 longitude[i] = Float.parseFloat(longitudeS[i]);
             }
             String hotelinfoQuery = new Query().infoHotel();
             String[] hotelInfoEns = hotelinfoQuery.split(":");
-            session.setAttribute("hotelinfo", hotelInfoEns);
-            session.setAttribute("latituderesult", latitude);  
+
+            session.setAttribute("latituderesult", latitude);
             session.setAttribute("longituderesult", longitude);
-                
-            
+            session.setAttribute("hotelinfo", hotelInfoEns);
+
             RequestDispatcher dispatcher = webApp.getRequestDispatcher("/maps.jsp");
-            
+
             response.setContentType("text/html");
             dispatcher.forward(request, response);
 

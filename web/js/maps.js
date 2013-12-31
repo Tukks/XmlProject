@@ -14,8 +14,6 @@
 function init(latitude, longitude, hotelinfo) {
     var centre = new google.maps.LatLng(43.69, 7.27); // Correspond au coordonnées central
 
-
-
 // Options de la maps
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -43,7 +41,7 @@ function init(latitude, longitude, hotelinfo) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(latitude[i], longitude[i]),
             map: map,
-            title: "locations[i][0]"
+            title: "Les hotels"
                     //icon: "marker.gif" // Chemin de l'image du marqueur
         });
         // Créer une info-bulle

@@ -46,7 +46,7 @@
         </div>
         <!-- Include Javascript -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
-        <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="js/maps.js"></script>
         <script language="javascript">
             var latitude = new Array();
@@ -66,17 +66,23 @@
             longitude[<%= i%>] = tmp;
             <%}
             %>
+                
+         
             var hotelInfo = new Array();
-           <%--  <% String[] hotelInfoJava = (String[]) session.getAttribute("hotelinfo"); 
+            <% String[] hotelInfoJava = (String[]) session.getAttribute("hotelinfo"); 
               for (int j = 0; j < hotelInfoJava.length; j++) {%>
                   <%= hotelInfoJava[0]%>
             var tmp = '<%= hotelInfoJava[j]%>';           //--> without this doesnt work
             hotelInfo[<%= j%>] = tmp;
-            alert(hotelInfo[j]);
+           
             <%}
-            %> --%> // a tester sans les com, comprend pas pourquoi sa marche pas quand il a c'est ligne
+            %> 
+       
+              
+            //Permet de lancer la map
             init(latitude, longitude,hotelInfo);
         </script>
-
+       
+           
     </body>
 </html>

@@ -2,7 +2,6 @@ package Query;
 
 import BDD.BaseXClient;
 import java.io.IOException;
-import org.eclipse.jdt.internal.compiler.batch.Main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -64,7 +63,6 @@ public class Query {
             }
 
             // close query instance
-            
             query.close();
 
         } catch (final IOException ex) {
@@ -77,7 +75,8 @@ public class Query {
 
         return result;
     }
-     public String longitudeMaps() throws IOException {
+
+    public String longitudeMaps() throws IOException {
         String result = "";
 
         try {
@@ -92,7 +91,6 @@ public class Query {
             }
 
             // close query instance
-            
             query.close();
 
         } catch (final IOException ex) {
@@ -105,14 +103,15 @@ public class Query {
 
         return result;
     }
+
     /**
      * Prend l'ID d'un hotel et retourne toute les infos associées
+     *
      * @param id l'id de l'hotel
-     * @return toute les infos de de l'hotel 
+     * @return toute les infos de de l'hotel
      */
-    public String hotelById(String id) throws IOException
-    {
-       String result = "";
+    public String hotelById(String id) throws IOException {
+        String result = "";
 
         try {
             // create query instance
@@ -136,31 +135,31 @@ public class Query {
         this.session.close();
 
         return result;
-        
+
     }
-    
-     public String infoHotel() throws IOException {
+
+    public String infoHotel() throws IOException {
         String result = "";
 
         try {
             // create query instance
-            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry where not(empty($var/longitude)) and  not(empty($var/latitude))"+
-"return data(concat(\"<p>\", $var/name_fr,\"</p><p>\", $var/address/address_line1,\"</p><p>\", $var/address/address_line2,\"</p><p>\",$var/address/zip,\"</p><p>\", $var/address/city,\"</p>\", \":\"))";
+            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry where not(empty($var/longitude)) and  not(empty($var/latitude))"
+                    + "return data(concat(\"<p>\", $var/name_fr,\"</p><p>\", $var/address/address_line1,\"</p><p>\", $var/address/address_line2,\"</p><p>\",$var/address/zip,\"</p><p>\", $var/address/city,\"</p>\", \":\"))";
             //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
             BaseXClient.Query query = session.query(input);
             // loop through all results
             int i = 0;
             while (query.more()) { // le if est la pour ne pas avoir le null au debut de ma chaine
-                if(i != 0){
+                if (i != 0) {
                     result = result + query.next();
-                }else{
-                    result =  query.next();
+                } else {
+                    result = query.next();
                     i++;
-            }
+                }
             }
             System.out.println(result);
             // close query instance
-            
+
             query.close();
 
         } catch (final IOException ex) {
@@ -173,9 +172,10 @@ public class Query {
 
         return result;
     }
-      public static void main (String[] args)throws IOException{
-          Query a = new Query();
-          
-          a.infoHotel();
-      }
+
+    public static void main(String[] args) throws IOException {
+        Query a = new Query();
+
+        a.infoHotel();
+    }
 }
