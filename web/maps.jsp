@@ -66,8 +66,16 @@
             longitude[<%= i%>] = tmp;
             <%}
             %>
-
-            init(latitude, longitude);
+            var hotelInfo = new Array();
+           <%--  <% String[] hotelInfoJava = (String[]) session.getAttribute("hotelinfo"); 
+              for (int j = 0; j < hotelInfoJava.length; j++) {%>
+                  <%= hotelInfoJava[0]%>
+            var tmp = '<%= hotelInfoJava[j]%>';           //--> without this doesnt work
+            hotelInfo[<%= j%>] = tmp;
+            alert(hotelInfo[j]);
+            <%}
+            %> --%> // a tester sans les com, comprend pas pourquoi sa marche pas quand il a c'est ligne
+            init(latitude, longitude,hotelInfo);
         </script>
 
     </body>

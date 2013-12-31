@@ -23,7 +23,7 @@ public class ServletMaps extends HttpServlet {
 
     public String LATITUDE_RESULT = "latituderesult";
         public String LONGITUDE_RESULT = "longituderesult";
-
+public String HOTEL_INFO = "hotelinfo";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,6 +53,9 @@ public class ServletMaps extends HttpServlet {
             for(int i = 0; i<longitudeS.length; i++){
                 longitude[i] = Float.parseFloat(longitudeS[i]);
             }
+            String hotelinfoQuery = new Query().infoHotel();
+            String[] hotelInfoEns = hotelinfoQuery.split(":");
+            session.setAttribute("hotelinfo", hotelInfoEns);
             session.setAttribute("latituderesult", latitude);  
             session.setAttribute("longituderesult", longitude);
                 

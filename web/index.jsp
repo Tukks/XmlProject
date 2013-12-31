@@ -66,5 +66,6 @@
         <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
+        
     </body>
 </html>

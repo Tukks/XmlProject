@@ -11,7 +11,7 @@
  *for $var in doc('data/entries_hotels.xml') /entries/entry/longitude 
  * return data($var)
  */
-function init(latitude, longitude) {
+function init(latitude, longitude, hotelinfo) {
     var centre = new google.maps.LatLng(43.69, 7.27); // Correspond au coordonnées central
 
 
@@ -49,7 +49,7 @@ function init(latitude, longitude) {
         // Créer une info-bulle
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("locations[i][0]");
+                infowindow.setContent(hotelinfo[i]);
                 infowindow.open(map, marker);
             };
         })(marker, i));
