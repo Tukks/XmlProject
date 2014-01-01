@@ -56,10 +56,10 @@ public class ServletMaps extends HttpServlet {
             }
             String hotelinfoQuery = new Query().infoHotel();
             String[] hotelInfoEns = hotelinfoQuery.split(":");
+            session.setAttribute("hotelinfo", hotelInfoEns);
 
             session.setAttribute("latituderesult", latitude);
             session.setAttribute("longituderesult", longitude);
-            session.setAttribute("hotelinfo", hotelInfoEns);
 
             RequestDispatcher dispatcher = webApp.getRequestDispatcher("/maps.jsp");
 

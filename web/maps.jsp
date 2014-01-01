@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.lang.String" language="java" %>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,10 +74,9 @@
             var hotelInfo = new Array();
             <% String[] hotelInfoJava = (String[]) session.getAttribute("hotelinfo"); 
               for (int j = 0; j < hotelInfoJava.length; j++) {%>
-                  <%= hotelInfoJava[0]%>
-            var tmp = '<%= hotelInfoJava[j]%>';           //--> without this doesnt work
+            var tmp = "<%= hotelInfoJava[j]%>";           //--> without this doesnt work
             hotelInfo[<%= j%>] = tmp;
-           
+          
             <%}
             %> 
        
