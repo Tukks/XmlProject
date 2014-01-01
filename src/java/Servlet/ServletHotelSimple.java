@@ -31,7 +31,6 @@ public class ServletHotelSimple extends HttpServlet {
 
     public String XSLT_NAME = "xslt/hotel.xsl";
     public String COOR_RESULT = "hotelcoor";
-
     public String HTML_RESULT = "hotelresult";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -76,7 +75,7 @@ public class ServletHotelSimple extends HttpServlet {
             // Transform input XML doc in HTML stream
             transformer.transform(xmlSource, new StreamResult(htmlStreamResult));
           
-            request.setAttribute(HTML_RESULT, new Query().hotelById(param));
+            request.setAttribute(HTML_RESULT, htmlStreamResult);
             String longitudeQuery = new Query().coordoById(param);
             String[] longitudeS = longitudeQuery.split(":");
             float[] coor = new float[longitudeS.length];
