@@ -47,10 +47,15 @@ function init(latitude, longitude, hotelinfo, bool) {
        if(bool == 1){ // Créer une info-bulle
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent('<div>'+'<b>'+hotelinfo[i]+'</b>'+'</div>');
+                infowindow.setContent(htmlDecode(hotelinfo[i]));
                 infowindow.open(map, marker);
             };
         })(marker, i));
     }
     }
+}
+function htmlDecode(input){
+  var e = document.createElement('p');
+  e.innerHTML = input;
+  return e.childNodes[0].nodeValue;
 }
