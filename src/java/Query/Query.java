@@ -136,7 +136,34 @@ public class Query {
         return result;
 
     }
+public String coordoById(String id) throws IOException {
+        String result = "";
 
+        try {
+            // create query instance
+            String input = "for $hotel in doc('data/entries_hotels.xml')/entries/entry where $hotel/ID = " + id + " return data(concat($hotel/longitude,\":\",$hotel/latitude))";
+          
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+
+    }
     public String infoHotel() throws IOException {
         String result = "";
 

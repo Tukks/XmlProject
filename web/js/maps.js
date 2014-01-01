@@ -11,7 +11,7 @@
  *for $var in doc('data/entries_hotels.xml') /entries/entry/longitude 
  * return data($var)
  */
-function init(latitude, longitude, hotelinfo) {
+function init(latitude, longitude, hotelinfo, bool) {
     var centre = new google.maps.LatLng(43.69, 7.27); // Correspond au coordonnées central
 
 // Options de la maps
@@ -44,12 +44,13 @@ function init(latitude, longitude, hotelinfo) {
             title: "Les hotels"
                     //icon: "marker.gif" // Chemin de l'image du marqueur
         });
-        // Créer une info-bulle
+       if(bool == 1){ // Créer une info-bulle
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(hotelinfo[i]);
+                infowindow.setContent('<div>'+'<b>'+hotelinfo[i]+'</b>'+'</div>');
                 infowindow.open(map, marker);
             };
         })(marker, i));
+    }
     }
 }

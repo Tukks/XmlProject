@@ -29,8 +29,18 @@
                 <h3 class="muted">Project XML</h3>
             </div>
 
-           
+
             <%=request.getAttribute("hotelresult")%>
+             <div id="cadre">
+                <div id="map">
+                    <p>Veuillez patienter pendant le chargement de la carte...</p>
+                </div>
+            </div>
+             
+             
+             
+
+
 
 
             <div class="footer">
@@ -43,9 +53,29 @@
         <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
         <script>
-    $(window).load(function() {
-      Pizza.init();
-    })
-  </script>
+                    $(window).load(function() {
+                        Pizza.init();
+                    })
+        </script>
+        
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgfQp0OgUsZoCHHq5as2jCEWBDsJOYHWU&sensor=false"></script>
+                <script type="text/javascript" charset="utf-8" language="javascript" src="lib/jquery-1.10.2.js"></script>
+                <script type="text/javascript" src="js/maps.js"></script>
+                <script language="javascript">
+                    var latitude = new Array();
+                    var longitude = new Array();
+                    var hotelInfo = new Array();
+                    <% float[] coorJava = (float[]) request.getAttribute("hotelcoor");
+
+                    %>
+                    longitude[0] = '<%= coorJava[0]%>';           //--> without this doesnt work
+                    latitude[0] = '<%= coorJava[1]%>';           //--> without this doesnt work
+
+                    <%
+                    %>
+                    init(latitude, longitude, hotelInfo, 0);
+
+                </script>
+
     </body>
 </html>

@@ -83,6 +83,7 @@
               
             //Permet de lancer la map
             init(latitude, longitude,hotelInfo);
+            
         </script>
        
            

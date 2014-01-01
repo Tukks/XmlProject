@@ -30,7 +30,8 @@ import org.xml.sax.InputSource;
 public class ServletHotelSimple extends HttpServlet {
 
     public String XSLT_NAME = "xslt/hotel.xsl";
-    
+    public String COOR_RESULT = "hotelcoor";
+
     public String HTML_RESULT = "hotelresult";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -76,7 +77,16 @@ public class ServletHotelSimple extends HttpServlet {
             transformer.transform(xmlSource, new StreamResult(htmlStreamResult));
           
             request.setAttribute(HTML_RESULT, new Query().hotelById(param));
+            String longitudeQuery = new Query().coordoById(param);
+            String[] longitudeS = longitudeQuery.split(":");
+            float[] coor = new float[longitudeS.length];
+            for (int i = 0; i < longitudeS.length; i++) {
+                coor[i] = Float.parseFloat(longitudeS[i]);
+            }
             
+            request.setAttribute(COOR_RESULT, coor);
+
+
             //Forward to the JSP
             webApp.getRequestDispatcher("/hotel.jsp").forward(request, response);
             
