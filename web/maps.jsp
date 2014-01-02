@@ -34,11 +34,7 @@
             </div>
 
             <hr>
-            <div id="cadre">
-                <div id="map">
-                    <p>Veuillez patienter pendant le chargement de la carte...</p>
-                </div>
-            </div>
+           
 
 
             <hr>

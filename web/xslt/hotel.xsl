@@ -18,8 +18,14 @@
         <html>
             <head>
                 <title>hotel.xsl</title>
+               
             </head>
             <body>
+                <div id="cadre">
+                <div id="map">
+                    <p>Veuillez patienter pendant le chargement de la carte...</p>
+                </div>
+            </div>              
                 <table cellpadding="1" cellspacing="1" border="1" class="table table-striped table-bordered" id="hotelTable">
                     <xsl:for-each select="/entry">
                
@@ -38,7 +44,9 @@
                             <tr>
                                 <th>
                                     Adresses
-                                </th>                                
+                                    
+                                </th>  
+                                                 
                                 <xsl:for-each select="address">                                      
                                     <td>
                                         <xsl:value-of select="address_line1"/>

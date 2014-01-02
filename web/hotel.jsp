@@ -32,11 +32,7 @@
                 <h3 class="muted">Project XML</h3>
             </div>
             <%=request.getAttribute("hotelresult")%>
-             <div id="cadre">
-                <div id="map">
-                    <p>Veuillez patienter pendant le chargement de la carte...</p>
-                </div>
-            </div>
+             
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
             </div>
@@ -68,6 +64,7 @@
                     <%
                     %>
                     init(latitude, longitude, hotelInfo, 0);
+                        google.maps.event.trigger(map, 'resize')
 
                 </script>
 
