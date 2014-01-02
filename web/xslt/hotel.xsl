@@ -20,7 +20,7 @@
                 <title>hotel.xsl</title>
             </head>
             <body>
-                <table cellpadding="1" cellspacing="1" border="1" class="table table-striped table-bordered" id="example">
+                <table cellpadding="1" cellspacing="1" border="1" class="table table-striped table-bordered" id="hotelTable">
                     <xsl:for-each select="/entry">
                
                         <div id="nom">
@@ -38,14 +38,20 @@
                             <tr>
                                 <th>
                                     Adresses
-                                </th>
+                                </th>                                
                                 <xsl:for-each select="address">                                      
                                     <td>
                                         <xsl:value-of select="address_line1"/>
-                                        <br/>
-                                        <xsl:value-of select="address_line2"/>
-                                        <br/>
-                                        <xsl:value-of select="address_line3"/>
+                                <xsl:if test="address_line2 != ''">
+                                    <br/>
+                                    <xsl:value-of select="address_line2"/>
+                                    <br/>
+                                </xsl:if>
+
+                                <xsl:if test="address_line3 != '' ">
+                                    <xsl:value-of select="address_line3"/>
+                                    <br/>
+                                </xsl:if>
                                     </td>  
                                     <td>
                                         <xsl:value-of select="zip"/>
@@ -90,7 +96,38 @@
                                 </th>
                                 <xsl:for-each select="languages/language">                                                
                                 <td>
-                                    <xsl:value-of select="."/>                           
+                                     <xsl:choose>
+                                         <xsl:when test=". = 'Anglais'">
+                                             <img src="lib\drapeaux\england.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Allemand'">
+                                             <img src="lib\drapeaux\germany.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Espagnol'">
+                                             <img src="lib\drapeaux\spain.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Italien'">
+                                             <img src="lib\drapeaux\italy.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Russe'">
+                                             <img src="lib\drapeaux\russia.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Français'">
+                                             <img src="lib\drapeaux\france.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Néerlandais'">
+                                             <img src="lib\drapeaux\netherlands.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Arabe'">
+                                             <img src="lib\drapeaux\arab.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Finois'">
+                                             <img src="lib\drapeaux\finland.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                         <xsl:when test=". = 'Portugais'">
+                                             <img src="lib\drapeaux\portugal.png" class="img-thumbnail"/>
+                                         </xsl:when>
+                                     </xsl:choose>                  
                                 </td>
                                 </xsl:for-each> 
                             </tr>   
@@ -408,3 +445,366 @@
     </xsl:template>
 
 </xsl:stylesheet>
+ <!-- TODO customize transformation rules
+         syntax recommendation http://www.w3.org/TR/xslt
+    -->
+   <!-- <xsl:template match="/">
+        <xsl:for-each select="/entry">
+
+            <div class ="nom">
+                <xsl:value-of select="name_fr"/>
+            </div>
+            <div class ="address">
+                <table>
+
+                        <xsl:for-each select="address">
+                            <td>
+                            
+                                <xsl:value-of select="address_line1"/>
+                                <xsl:if test="address_line2 != ''">
+                                    <br/>
+                                    <xsl:value-of select="address_line2"/>
+                                    <br/>
+                                </xsl:if>
+
+                                <xsl:if test="address_line3 != '' ">
+                                    <xsl:value-of select="address_line3"/>
+                                    <br/>
+                                </xsl:if>
+                            </td>
+                            <td>
+                                
+                                    <td>
+                                        <xsl:value-of select="zip"/>
+                                    </td>
+                                
+                                
+   
+                                
+                                    <td>
+                                        <xsl:value-of select="city"/>
+                                    </td>
+                               
+                            </td>
+                        </xsl:for-each>
+
+                </table>
+
+
+            </div>
+            <div class = "contact">
+                <xsl:value-of select="phone"/>
+                <br/>
+                <xsl:value-of select="fax"/>
+                <br/>
+                <xsl:value-of select="email"/>
+                <br/>
+                <xsl:value-of select="website"/>
+
+
+            </div>
+            <div class = "payments">
+
+
+
+                <xsl:for-each select="payments/payment">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "languages">
+
+
+
+
+                <xsl:for-each select="languages/language">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="labels">
+
+
+
+
+                <xsl:for-each select="labels/label">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "amenities">
+
+
+
+                <xsl:for-each select="amenities/amenity">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "profiles">
+
+
+                <xsl:for-each select="profiles/profile">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "location">
+
+
+
+
+                <xsl:for-each select="locations/location">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "categories">
+
+
+
+
+                <xsl:for-each select="categories/categorie">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "station">
+
+
+
+                <xsl:for-each select="stations/station">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class = "standing_levels">
+
+
+
+
+
+                <xsl:value-of select="standing_levels"/>
+
+
+            </div>
+            <div class = "options">
+
+
+
+
+                <xsl:for-each select="options/option">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="publications">
+
+
+
+
+                <xsl:for-each select="publications/publication">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="common_tags">
+
+
+
+
+                <xsl:value-of select="common_tags"/>
+
+
+
+            </div>
+
+            <div class ="images">
+
+
+
+                <xsl:for-each select="images/image">
+
+                    <img>
+                        <xsl:attribute name="src">
+                            <xsl:value-of select="."/>
+                        </xsl:attribute>
+                    </img>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="living">
+
+                <xsl:for-each select="living">
+
+                    <xsl:value-of select="room_count"/>
+
+
+                    <xsl:value-of select="room_bath_count"/>
+
+
+                    <xsl:value-of select="suite_count"/>
+
+
+                    <xsl:value-of select="studio_count"/>
+
+
+                    <xsl:value-of select="apartment_count"/>
+
+
+                    <xsl:value-of select="room_accessible_count"/>
+
+
+                    <xsl:value-of select="single_count"/>
+
+
+                    <xsl:value-of select="double_count"/>
+
+
+                    <xsl:value-of select="triple_count"/>
+
+
+                    <xsl:value-of select="twins_count"/>
+
+
+                    <xsl:value-of select="family_count"/>
+
+
+                    <xsl:value-of select="area"/>
+
+
+                    <xsl:value-of select="type"/>
+
+
+                    <xsl:value-of select="floor"/>
+
+
+                    <xsl:value-of select="bedroom_count"/>
+
+
+                    <xsl:value-of select="sleeps_count"/>
+
+
+                    <xsl:value-of select="furnished_room_count"/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="tariffs">
+
+
+
+                <xsl:for-each select="tariffs/tariff">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="capacity">
+
+
+
+                <xsl:for-each select="capacities/capacity">
+
+                    <xsl:value-of select="."/>
+
+                </xsl:for-each>
+
+            </div>
+            <div class ="closures">
+
+
+
+
+                <xsl:value-of select="closures"/>
+
+
+            </div>
+            <div class ="spaces">
+
+
+
+                <xsl:value-of select="spaces"/>
+
+
+            </div>
+            <div class ="opening">
+
+
+
+                <xsl:value-of select="opening"/>
+
+
+            </div>
+            <div class ="closure">
+
+
+
+
+                <xsl:value-of select="closure"/>
+
+
+            </div>
+            <div class ="note">
+
+
+
+
+                <xsl:value-of select="note"/>
+
+
+            </div>
+            <div class ="niceres_availability">
+
+
+
+                <xsl:value-of select="niceres_availability"/>
+
+
+            </div>
+            <div class ="niceres_id">
+
+
+                <xsl:value-of select="niceres_id"/>
+
+
+            </div>
+            <div class ="created">
+
+
+                <xsl:value-of select="created"/>
+
+
+            </div>
+            <div class ="updated">
+
+
+                <xsl:value-of select="updated"/>
+
+
+            </div>
+        </xsl:for-each>
+    </xsl:template>
+-->

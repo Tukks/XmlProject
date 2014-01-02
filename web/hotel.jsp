@@ -13,9 +13,12 @@
 
         <title>Hotel</title>
 
-        <link rel="shortcut icon" type="image/ico" href="" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/ico" href="">
+        
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
+        
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/hotelSimple.css">
     </head>
     <body>
         <div class="container">
@@ -28,21 +31,12 @@
                 </ul>
                 <h3 class="muted">Project XML</h3>
             </div>
-
-
             <%=request.getAttribute("hotelresult")%>
              <div id="cadre">
                 <div id="map">
                     <p>Veuillez patienter pendant le chargement de la carte...</p>
                 </div>
             </div>
-             
-             
-             
-
-
-
-
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
             </div>
