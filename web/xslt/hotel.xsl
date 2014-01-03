@@ -24,11 +24,11 @@
                 <div class="col-xs-12 enTete">
                     <div class="nom">
 
-                            <xsl:value-of select="name_fr"/> 
-                            -  
-                            <xsl:value-of select="address/city"/>
-                            : 
-                            <xsl:value-of select="standings_levels/standings_level"/>
+                        <xsl:value-of select="name_fr"/> 
+                        -  
+                        <xsl:value-of select="address/city"/>
+                        : 
+                        <xsl:value-of select="standings_levels/standings_level"/>
  
                         <br/>
                     </div>
@@ -47,42 +47,181 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6 gauche">
-                    a gauche
-                </div>
+
+            <div class="row carrouselEtMap">
+                <div class="col-xs-6 gauche">                                  
+                    <div id="#myCarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <xsl:for-each select="images/image">
+                                <li data-target="#myCarousel">
+                                    <xsl:attribute name="data-slide-to">
+                                        <xsl:value-of select="position() - 1"/>
+                                    </xsl:attribute> 
+                                    <xsl:if test="position()-1 = 0">
+                                        <xsl:attribute name="class">active</xsl:attribute>
+                                    </xsl:if> 
+                                </li>                     
+                            </xsl:for-each>  
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img>                                   
+                                    <xsl:attribute name="src">
+                                        <xsl:value-of select="images/image"/>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="alt"></xsl:attribute>
+                                </img>
+                            </div>                           
+                            <xsl:for-each select="images/image">                              
+                                <xsl:if test="position() != 1">
+                                    <div class="item">
+                                        <img>                                   
+                                            <xsl:attribute name="src">
+                                                <xsl:value-of select="."/>
+                                            </xsl:attribute>
+                                            <xsl:attribute name="alt"></xsl:attribute>
+                                        </img>
+                                    </div>
+                                </xsl:if>                              
+                            </xsl:for-each>
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>              
                 <div class="col-xs-6 droite">
-                    a droite
+                    <div id="cadre">
+                        <div id="map">
+                            <p>Veuillez patienter pendant le chargement de la carte...</p>
+                        </div>
+                    </div>
+            
                 </div>             
-            </div>
-            
-            
+            </div>           
             <br />
             <br />
-            <div id="cadre">
-                <div id="map">
-                    <p>Veuillez patienter pendant le chargement de la carte...</p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class= "contact">               
+                        <h2>
+                            Contact
+                        </h2>
+                        <br/>
+                        <xsl:value-of select="phone"/>
+                        <br/>
+                        <xsl:value-of select="fax"/>
+                        <br/>
+                        <xsl:value-of select="email"/>
+                        <br/>
+                        <xsl:value-of select="website"/>
+                    </div>  
+                
+            
+            
+                    <div class="labels">
+                        <h2>
+                            Labels
+                        </h2>
+                        <br/>
+                        <xsl:for-each select="labels/label">
+                            <xsl:value-of select="."/>
+                        </xsl:for-each>
+                    </div>
                 </div>
-                <br /> 
-                <br />
+               
             </div>
-            
-            <div class= "contact">
-                <div class="span12">
-                    <xsl:value-of select="phone"/>
-                    <br/>
-                    <xsl:value-of select="fax"/>
-                    <br/>
-                    <xsl:value-of select="email"/>
-                    <br/>
-                    <xsl:value-of select="website"/>
-                </div>  
-            </div>
-            <div class = "payments">
-                <div class="span12">
-                    <xsl:for-each select="payments/payment">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
+            <br/>
+            <br/>
+        
+
+            <div class="row caracteristiques">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <h4>
+                                Amenities
+                            </h4>
+                            <br/>
+                            <div class = "amenities">                       
+                                <xsl:for-each select="amenities/amenity">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>                    
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class = "payments">  
+                                <h4>
+                                    Paiements
+                                </h4>
+                                <br/>              
+                                <xsl:for-each select="payments/payment">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>             
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class = "locations">   
+                                <h4>
+                                    Proche
+                                </h4>
+                                <br/>             
+                                <xsl:for-each select="locations/location">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>             
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class = "profiles">
+                                <h4>
+                                    Profiles
+                                </h4>
+                                <br/>                            
+                                <xsl:for-each select="profiles/profile">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>                             
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class = "options">
+                                <h4>
+                                    Options
+                                </h4>
+                                <br/>                            
+                                <xsl:for-each select="options/option">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>                             
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class = "publications">
+                                <h4>
+                                    Publications
+                                </h4>
+                                <br/>                            
+                                <xsl:for-each select="publications/publication">
+                                    <li>
+                                        <xsl:value-of select="."/>
+                                    </li>
+                                </xsl:for-each>                             
+                            </div>
+                        </div>
+                    </div>                   
                 </div>
             </div>
             <div class = "languages">
@@ -123,34 +262,10 @@
                     </xsl:for-each>
                 </div>
             </div>
-            <div class="labels">
-                <div class="span12">
-                    <xsl:for-each select="labels/label">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
-            <div class = "amenities">
-                <div class="span12">
-                    <xsl:for-each select="amenities/amenity">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
-            <div class = "profiles">
-                <div class="span12">
-                    <xsl:for-each select="profiles/profile">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
-            <div class = "location">
-                <div class="span12">
-                    <xsl:for-each select="locations/location">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
+           
+            
+            
+    
             <div class = "categories">
                 <div class="span12">
                     <xsl:for-each select="categories/categorie">
@@ -187,17 +302,6 @@
             <div class="common_tags">
                 <div class="span12">
                     <xsl:value-of select="common_tags"/>
-                </div>
-            </div>
-            <div class="images">
-                <div class="span12">
-                    <xsl:for-each select="images/image">
-                        <img>
-                            <xsl:attribute name="src">
-                                <xsl:value-of select="."/>
-                            </xsl:attribute>
-                        </img>
-                    </xsl:for-each>
                 </div>
             </div>
             <div class="living">
