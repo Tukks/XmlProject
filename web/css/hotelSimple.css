@@ -11,19 +11,21 @@ table
 {
     border: 1px solid black;
 }
-div.nom
+div.enTete
 {
     text-align: center;
+}
+div.nom
+{
+    
     font-size: 28px;
     color: blue;   
 }
-div.address.table.tbody.tr.td
+div.adresse
 {
-
-        width: 500px;
-        font-size: 35px;
     
 }
+
 
 
 
