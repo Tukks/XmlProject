@@ -23,7 +23,7 @@
     <body>
 
         <div class="container">
-
+ 
             <div>
                 <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
@@ -36,7 +36,11 @@
             <hr>
            
 
-
+<div id="cadre">
+            <div id="map">
+                <p>Veuillez patienter pendant le chargement de la carte...</p>
+            </div>
+        </div>
             <hr>
 
             <div class="footer">

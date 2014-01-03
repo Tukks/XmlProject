@@ -18,16 +18,17 @@
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
     <xsl:template match="/">
-        <div id="cadre">
-            <div id="map">
-                <p>Veuillez patienter pendant le chargement de la carte...</p>
-            </div>
-        </div>
+       
         <xsl:for-each select="/entry">
             <div class="row">
                 <div class="nom">
                     <xsl:value-of select="name_fr"/>
-                </div>
+                </div><br /><br />
+                 <div id="cadre">
+            <div id="map">
+                <p>Veuillez patienter pendant le chargement de la carte...</p>
+            </div><br /> <br />
+        </div>
                 <div class="adresse">
                     <xsl:for-each select="address">
                         <div class="span6">
