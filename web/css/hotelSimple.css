@@ -25,6 +25,18 @@ div.adresse
 {
     
 }
+div.carrouselEtMap{
+    height: 20%
+}
+
+div.carrouselEtMap.gauche{
+    height: 20%
+}
+
+div.caracteristiques
+{
+    font-size: 14px;
+}
 
 
 
