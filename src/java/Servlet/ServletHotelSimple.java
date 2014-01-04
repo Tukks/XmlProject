@@ -80,7 +80,8 @@ public class ServletHotelSimple extends HttpServlet {
             String[] longitudeS = longitudeQuery.split(":");
             float[] coor = new float[longitudeS.length];
             for (int i = 0; i < longitudeS.length; i++) {
-                coor[i] = Float.parseFloat(longitudeS[i]);
+                     coor[i] = Float.parseFloat(longitudeS[i]);
+                     
             }
             
             request.setAttribute(COOR_RESULT, coor);

@@ -101,11 +101,9 @@
                             <p>Veuillez patienter pendant le chargement de la carte...</p>
                         </div>
                     </div>
-            
                 </div>             
             </div>           
-            <br />
-            <br />
+            
             <div class="row">
                 <div class="col-xs-12">
                     <div class= "contact">               
