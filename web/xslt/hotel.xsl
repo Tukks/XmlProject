@@ -224,42 +224,204 @@
                     </div>                   
                 </div>
             </div>
-            <div class = "languages">
-                <div class="span12">
-                    <xsl:for-each select="languages/language">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Anglais'">
-                                <img src="lib\drapeaux\england.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Allemand'">
-                                <img src="lib\drapeaux\germany.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Espagnol'">
-                                <img src="lib\drapeaux\spain.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Italien'">
-                                <img src="lib\drapeaux\italy.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Russe'">
-                                <img src="lib\drapeaux\russia.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Français'">
-                                <img src="lib\drapeaux\france.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Néerlandais'">
-                                <img src="lib\drapeaux\netherlands.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Arabe'">
-                                <img src="lib\drapeaux\arab.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Finois'">
-                                <img src="lib\drapeaux\finland.png" class="img-thumbnail"/>
-                            </xsl:when>
-                            <xsl:when test=". = 'Portugais'">
-                                <img src="lib\drapeaux\portugal.png" class="img-thumbnail"/>
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped">
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Unique
+                        </th>
+                        <th>
+                            Prix minimum
+                        </th>
+                        <th>
+                            Prix maximum
+                        </th>
+                        <th>
+                            Prix moyen
+                        </th>
+                        <th>
+                            Prix fixe
+                        </th>
+                        <xsl:for-each select="tariffs/tariff">
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="name"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="unique"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="min"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="max"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="average"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="fixe"/>
+                                </td>
+                                
+                            </tr>
+                        </xsl:for-each>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped livings">
+                        <tr>
+                        <th>
+                            Nombre de chambres
+                        </th>
+                        <th>
+                            Nombre de salles de bains
+                        </th>
+                        <th>
+                            Nombre de douches
+                        </th>
+                        <th>
+                            Nombre de suites
+                        </th>
+                        <th>
+                            Nombre de studios
+                        </th>
+                        <th>
+                            Nombre d'appartements
+                        </th>
+                        <th>
+                            Nombre de chambres pour handicapées
+                        </th>
+                         <th>
+                            Nombre de chambres simples
+                         </th>
+                        <th>
+                            Nombre de chambres doubles
+                        </th>
+                        <th>
+                            Nombre de chambres triple
+                        </th>
+                        <th>
+                            Nombre de chambres jumelles
+                        </th>
+                        <th>
+                            Nombre de chambres familiales 
+                        </th>
+                        <th>
+                            Nombre de zones
+                        </th>
+                        <th>
+                            Types
+                        </th>
+                        <th>
+                            Etages
+                        </th>
+                         <th>
+                            Nombre de chambres à coucher
+                         </th>
+                         <th>
+                             Nombres de "sleeps"
+                         </th>
+                         <th>
+                             Nombres de chambres meublées
+                         </th>
+                     </tr>
+                        <xsl:for-each select="living">
+                            <tr>                           
+                                <td>
+                                    <xsl:value-of select="room_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="room_bath_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="room_shower_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="suite_count"/>
+                                </td>
+                            
+                             
+                                <td>
+                                    <xsl:value-of select="studio_count"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="apartment_room"/>
+                                </td>
+                            
+                             
+                                <td>
+                                    <xsl:value-of select="room_accessible_count"/>
+                                </td>
+                            
+                             
+                                <td>
+                                    <xsl:value-of select="single_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="double_count"/>
+                                </td>
+                            
+                             
+                                <td>
+                                    <xsl:value-of select="triple_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="twins_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="family_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="area"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="type"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="floor"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="bedroom_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="sleeps_count"/>
+                                </td>
+                            
+                            
+                                <td>
+                                    <xsl:value-of select="furnished_room_count"/>
+                                </td>
+                            </tr>                          
+                        </xsl:for-each>
+                    </table>
                 </div>
             </div>
            
@@ -285,53 +447,9 @@
                     <xsl:value-of select="standing_levels"/>
                 </div>
             </div>
-            <div class = "options">
-                <div class="span12">
-                    <xsl:for-each select="options/option">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
-            <div class="publications">
-                <div class="span12">
-                    <xsl:for-each select="publications/publication">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
-                </div>
-            </div>
             <div class="common_tags">
                 <div class="span12">
                     <xsl:value-of select="common_tags"/>
-                </div>
-            </div>
-            <div class="living">
-                <div class="span12">
-                    <xsl:for-each select="living">
-                        <xsl:value-of select="room_count"/>
-                        <xsl:value-of select="room_bath_count"/>
-                        <xsl:value-of select="suite_count"/>
-                        <xsl:value-of select="studio_count"/>
-                        <xsl:value-of select="apartment_count"/>
-                        <xsl:value-of select="room_accessible_count"/>
-                        <xsl:value-of select="single_count"/>
-                        <xsl:value-of select="double_count"/>
-                        <xsl:value-of select="triple_count"/>
-                        <xsl:value-of select="twins_count"/>
-                        <xsl:value-of select="family_count"/>
-                        <xsl:value-of select="area"/>
-                        <xsl:value-of select="type"/>
-                        <xsl:value-of select="floor"/>
-                        <xsl:value-of select="bedroom_count"/>
-                        <xsl:value-of select="sleeps_count"/>
-                        <xsl:value-of select="furnished_room_count"/>
-                    </xsl:for-each>
-                </div>
-            </div>
-            <div class="tariffs">
-                <div class="span12">
-                    <xsl:for-each select="tariffs/tariff">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
                 </div>
             </div>
             <div class="capacity">
