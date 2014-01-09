@@ -13,7 +13,8 @@
         <title>Index</title>
 
         <link rel="shortcut icon" type="image/ico" href="" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrapNew/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/template.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
     </head>
     <body>
@@ -23,17 +24,15 @@
                 <ul class="nav nav-pills pull-right">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="maps.html">Maps</a></li>
-                    <li><a href="#">SVG</a></li>
+                    <li><a href="svg.html">SVG</a></li>
                 </ul>
-                <h3 class="muted">Project XML</h3>
+                <h3 class="text-muted">Project XML</h3>
             </div>
 
             <hr>
             <form class="form-inline">
                 <div class="row">
                     <div class="col-xs-12">
-
-
                         <div class="row">
                             <div class="col-xs-3">
                                 <label for="etoiles" class="control-label">Classification :</label><br/>                        
@@ -59,26 +58,30 @@
                                 <input type="submit" class=" form-control btn btn-info" name="rechercher"/>
                             </div>
                         </div>
-                        </form>
-
-                        <div style="margin-top: 10px; font-size: 13px">
-                            <%=request.getAttribute("htmlresult")%>
-                        </div>
-
-                        <hr>
-
-                        <div class="footer">
-                            <p>&copy; MIAGE 2013</p>
-                        </div>
                     </div>
                 </div>
+            </form>
+            
+            <hr>
 
+            <div style="margin-top: 10px; font-size: 13px">
+                <%=request.getAttribute("htmlresult")%>
+            </div>
+
+            <br />
+
+            <div class="footer">
+                <p>&copy; MIAGE 2013</p>
+            </div>
         </div>
+    </div>
 
-        <!-- Include Javascript -->
-        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
-        <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
+</div>
 
-    </body>
+<!-- Include Javascript -->
+<script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
+
+</body>
 </html>

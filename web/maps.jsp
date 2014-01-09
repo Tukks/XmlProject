@@ -13,37 +13,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="shortcut icon" type="image/ico" href="" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrapNew/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/hotel.css">
+        <link rel="stylesheet" type="text/css" href="css/template.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/map.css">
         <title>Maps hotels</title>
     </head>
     <style type="text/css">
         #map img {
             max-width: none;
         }
-         #infoBulle{
-width:200px;
-height:300px;
-}
+        #infoBulle{
+            width:200px;
+            height:300px;
+        }
     </style>
     <body>
         <div class="container">
-            
+
 
             <div>
                 <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
                     <li  class="active"><a href="maps.html">Maps</a></li>
-                    <li><a href="#">SVG</a></li>
+                    <li><a href="svg.html">SVG</a></li>
                 </ul>
-                <h3 class="muted">Project XML</h3>
+                <h3 class="text-muted">Project XML</h3>
             </div>
 
-            
-
-           
             <hr>
-            <br />
+
             <div id="cadre">
                 <div id="map">
                     <p>Veuillez patienter pendant le chargement de la carte...</p>
@@ -52,7 +50,8 @@ height:300px;
                 </div>
             </div>
 
-
+            <br />
+            
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
             </div>

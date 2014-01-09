@@ -49,10 +49,10 @@
             </div>
             <div class="row carrouselEtMap">
                 <div class="col-xs-6 gauche">                                  
-                    <div id="#myCarousel" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <xsl:for-each select="images/image">
-                                <li data-target="#myCarousel">
+                                <li data-target="myCarousel">
                                     <xsl:attribute name="data-slide-to">
                                         <xsl:value-of select="position() - 1"/>
                                     </xsl:attribute> 

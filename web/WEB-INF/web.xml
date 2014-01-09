@@ -12,6 +12,14 @@
         <servlet-name>ServletHotelSimple</servlet-name>
         <servlet-class>Servlet.ServletHotelSimple</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSVG</servlet-name>
+        <servlet-class>Servlet.ServletSVG</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletFOP</servlet-name>
+        <servlet-class>Servlet.ServletFOP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletMaps</servlet-name>
         <url-pattern>/maps.html</url-pattern>
@@ -21,8 +29,16 @@
         <url-pattern>/index.html</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-         <servlet-name>ServletHotelSimple</servlet-name>
-         <url-pattern>/hotel.html</url-pattern>
+        <servlet-name>ServletHotelSimple</servlet-name>
+        <url-pattern>/hotel.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSVG</servlet-name>
+        <url-pattern>/ServletSVG</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFOP</servlet-name>
+        <url-pattern>/ServletFOP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -34,6 +50,4 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-    
 </web-app>
-
