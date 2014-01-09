@@ -22,6 +22,10 @@
         #map img {
             max-width: none;
         }
+         #infoBulle{
+width:200px;
+height:300px;
+}
     </style>
     <body>
         <div class="container">

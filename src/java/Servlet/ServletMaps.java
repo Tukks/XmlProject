@@ -55,7 +55,7 @@ public class ServletMaps extends HttpServlet {
                 longitude[i] = Float.parseFloat(longitudeS[i]);
             }
             String hotelinfoQuery = new Query().infoHotel();
-            String[] hotelInfoEns = hotelinfoQuery.split(":");
+            String[] hotelInfoEns = hotelinfoQuery.split("#");
             session.setAttribute("hotelinfo", hotelInfoEns);
 
             session.setAttribute("latituderesult", latitude);

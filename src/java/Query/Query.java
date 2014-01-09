@@ -170,7 +170,7 @@ public String coordoById(String id) throws IOException {
         try {
             // create query instance
             String input = "for $var in doc('data/entries_hotels.xml') /entries/entry where not(empty($var/longitude)) and  not(empty($var/latitude))"
-                    + "return data(concat('<p><b>', $var/name_fr,'</b><br />', $var/address/address_line1, $var/address/address_line2,'<br />',$var/address/zip,'<br />', $var/address/city,'<br /> Telephone ',$var/phone,'<br /><a href=./hotel.html?hotel=',$var/ID,'>More info</a></p>', ':'))";
+                    + "return data(concat('<div id=infoBulle><p><b>', $var/name_fr,'</b><br /><img src=',subsequence($var/images/image,1,1),' width=200 height=200><br />', $var/address/address_line1, $var/address/address_line2,'<br />',$var/address/zip,'<br />', $var/address/city,'<br /> Telephone ',$var/phone,'<br /><a href=./hotel.html?hotel=',$var/ID,'>More info</a></p></div>', '#'))";
             //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
             BaseXClient.Query query = session.query(input);
             // loop through all results

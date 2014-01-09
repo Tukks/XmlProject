@@ -35,7 +35,9 @@ function init(latitude, longitude, hotelinfo, bool) {
         streetViewControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow({
+       
+  });
     var marker, i;
     for (i = 0; i < latitude.length; i++) {
 // Placer un point sur la carte
@@ -51,6 +53,7 @@ function init(latitude, longitude, hotelinfo, bool) {
                 return function() {
                     infowindow.setContent(htmlDecode(hotelinfo[i]));
                     infowindow.open(map, marker);
+                    
                 };
             })(marker, i));
         }
