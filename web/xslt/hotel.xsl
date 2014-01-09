@@ -47,7 +47,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row carrouselEtMap">
                 <div class="col-xs-6 gauche">                                  
                     <div id="#myCarousel" class="carousel slide" data-ride="carousel">
@@ -133,11 +132,53 @@
                             <xsl:value-of select="."/>
                         </xsl:for-each>
                     </div>
-                </div>
-               
+                </div>              
             </div>
-            <br/>
-            <br/>
+            <div class="row">               
+                <div class = "col-xs-12">
+                    <h2>
+                        Langues parlées
+                    </h2>
+                    <div class="languages">
+                        <xsl:for-each select="languages/language">
+                            <xsl:choose>
+                                <xsl:when test=". = 'Anglais'">
+                                    <img src="lib\drapeaux\england.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Allemand'">
+                                    <img src="lib\drapeaux\germany.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Espagnol'">
+                                    <img src="lib\drapeaux\spain.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Italien'">
+                                    <img src="lib\drapeaux\italy.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Russe'">
+                                    <img src="lib\drapeaux\russia.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Français'">
+                                    <img src="lib\drapeaux\france.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Néerlandais'">
+                                    <img src="lib\drapeaux\netherlands.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Arabe'">
+                                    <img src="lib\drapeaux\arab.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Finois'">
+                                    <img src="lib\drapeaux\finland.png" class="img-thumbnail"/>
+                                </xsl:when>
+                                <xsl:when test=". = 'Portugais'">
+                                    <img src="lib\drapeaux\portugal.png" class="img-thumbnail"/>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:for-each>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+            </div>
         
 
             <div class="row caracteristiques">
@@ -276,61 +317,61 @@
                 <div class="col-xs-12">
                     <table class="table table-striped livings">
                         <tr>
-                        <th>
-                            Nombre de chambres
-                        </th>
-                        <th>
-                            Nombre de salles de bains
-                        </th>
-                        <th>
-                            Nombre de douches
-                        </th>
-                        <th>
-                            Nombre de suites
-                        </th>
-                        <th>
-                            Nombre de studios
-                        </th>
-                        <th>
-                            Nombre d'appartements
-                        </th>
-                        <th>
-                            Nombre de chambres pour handicapées
-                        </th>
-                         <th>
-                            Nombre de chambres simples
-                         </th>
-                        <th>
-                            Nombre de chambres doubles
-                        </th>
-                        <th>
-                            Nombre de chambres triple
-                        </th>
-                        <th>
-                            Nombre de chambres jumelles
-                        </th>
-                        <th>
-                            Nombre de chambres familiales 
-                        </th>
-                        <th>
-                            Nombre de zones
-                        </th>
-                        <th>
-                            Types
-                        </th>
-                        <th>
-                            Etages
-                        </th>
-                         <th>
-                            Nombre de chambres à coucher
-                         </th>
-                         <th>
-                             Nombres de "sleeps"
-                         </th>
-                         <th>
-                             Nombres de chambres meublées
-                         </th>
-                     </tr>
+                            <th>
+                                Nombre de chambres
+                            </th>
+                            <th>
+                                Nombre de salles de bains
+                            </th>
+                            <th>
+                                Nombre de douches
+                            </th>
+                            <th>
+                                Nombre de suites
+                            </th>
+                            <th>
+                                Nombre de studios
+                            </th>
+                            <th>
+                                Nombre d'appartements
+                            </th>
+                            <th>
+                                Nombre de chambres pour handicapées
+                            </th>
+                            <th>
+                                Nombre de chambres simples
+                            </th>
+                            <th>
+                                Nombre de chambres doubles
+                            </th>
+                            <th>
+                                Nombre de chambres triple
+                            </th>
+                            <th>
+                                Nombre de chambres jumelles
+                            </th>
+                            <th>
+                                Nombre de chambres familiales 
+                            </th>
+                            <th>
+                                Nombre de zones
+                            </th>
+                            <th>
+                                Types
+                            </th>
+                            <th>
+                                Etages
+                            </th>
+                            <th>
+                                Nombre de chambres à coucher
+                            </th>
+                            <th>
+                                Nombres de "sleeps"
+                            </th>
+                            <th>
+                                Nombres de chambres meublées
+                            </th>
+                        </tr>
                         <xsl:for-each select="living">
                             <tr>                           
                                 <td>
@@ -429,79 +470,107 @@
             
     
             <div class = "categories">
-                <div class="span12">
-                    <xsl:for-each select="categories/categorie">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:for-each select="categories/categorie">
+                            <xsl:value-of select="."/>
+                        </xsl:for-each>
+                    </div>
                 </div>
             </div>
             <div class = "station">
-                <div class="span12">
-                    <xsl:for-each select="stations/station">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:for-each select="stations/station">
+                            <xsl:value-of select="."/>
+                        </xsl:for-each>
+                    </div>
                 </div>
             </div>
             <div class = "standing_levels">
-                <div class="span12">
-                    <xsl:value-of select="standing_levels"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="standing_levels"/>
+                    </div>
                 </div>
             </div>
             <div class="common_tags">
-                <div class="span12">
-                    <xsl:value-of select="common_tags"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="common_tags"/>
+                    </div>
                 </div>
             </div>
             <div class="capacity">
-                <div class="span12">
-                    <xsl:for-each select="capacities/capacity">
-                        <xsl:value-of select="."/>
-                    </xsl:for-each>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:for-each select="capacities/capacity">
+                            <xsl:value-of select="."/>
+                        </xsl:for-each>
+                    </div>
                 </div>
             </div>
             <div class="closures">
-                <div class="span12">
-                    <xsl:value-of select="closures"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="closures"/>
+                    </div>
                 </div>
             </div>
             <div class="spaces">
-                <div class="span12">
-                    <xsl:value-of select="spaces"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="spaces"/>
+                    </div>
                 </div>
             </div>
             <div class="opening">
-                <div class="span12">
-                    <xsl:value-of select="opening"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="opening"/>
+                    </div>
                 </div>
             </div>
             <div class="closure">
-                <div class="span12">
-                    <xsl:value-of select="closure"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="closure"/>
+                    </div>
                 </div>
             </div>
             <div class="note">
-                <div class="span12">
-                    <xsl:value-of select="note"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="note"/>
+                    </div>
                 </div>
             </div>
             <div class="niceres_availability">
-                <div class="span12">
-                    <xsl:value-of select="niceres_availability"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="niceres_availability"/>
+                    </div>
                 </div>
             </div>
             <div class="niceres_class">
-                <div class="span12">
-                    <xsl:value-of select="niceres_class"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="niceres_class"/>
+                    </div>
                 </div>
             </div>
             <div class="created">
-                <div class="span12">
-                    <xsl:value-of select="created"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="created"/>
+                    </div>
                 </div>
             </div>
             <div class="updated">
-                <div class="span12">
-                    <xsl:value-of select="updated"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <xsl:value-of select="updated"/>
+                    </div>
                 </div>
             </div>
         </xsl:for-each>
