@@ -13,7 +13,7 @@
         <title>Index</title>
 
         <link rel="shortcut icon" type="image/ico" href="" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/bootstrapNew/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
     </head>
     <body>
@@ -30,42 +30,55 @@
 
             <hr>
             <form class="form-inline">
-                <div class="control-group">
-                <label>Classification :</label>
+                <div class="row">
+                    <div class="col-xs-12">
 
-                <select class="span2">
-                    <option>1 étoile</option>
-                    <option>2 étoiles</option>
-                    <option>3 étoiles</option>
-                    <option>4 étoiles</option>
-                    <option>5 étoiles</option>
-                </select> 
 
-                <label>Prix :</label>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="etoiles" class="control-label">Classification :</label><br/>                        
+                                <select id="etoiles" class="form-control">
+                                    <option>1 étoile</option>
+                                    <option>2 étoiles</option>
+                                    <option>3 étoiles</option>
+                                    <option>4 étoiles</option>
+                                    <option>5 étoiles</option>
+                                </select> 
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="min" class="control-label">Prix Minimum : </label>
+                                <input type="text" id="min" class="form-control" placeholder="Min">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="max" class="control-label">Prix Maximum : </label>
 
-                <input type="text" id="min" placeholder="Min" class="span2">
+                                <input type="text" id="max" class="form-control" placeholder="Max">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="rechercher" class="control-label"></label>
+                                <input type="submit" class=" form-control btn btn-info" name="rechercher"/>
+                            </div>
+                        </div>
+                        </form>
 
-                <label class=>entre :</label>
+                        <div style="margin-top: 10px; font-size: 13px">
+                            <%=request.getAttribute("htmlresult")%>
+                        </div>
 
-                <input type="text" id="max" placeholder="Max" class="span2">
+                        <hr>
+
+                        <div class="footer">
+                            <p>&copy; MIAGE 2013</p>
+                        </div>
+                    </div>
                 </div>
-            </form>
 
-            <div style="margin-top: 10px; font-size: 13px">
-                <%=request.getAttribute("htmlresult")%>
-            </div>
-
-            <hr>
-
-            <div class="footer">
-                <p>&copy; MIAGE 2013</p>
-            </div>
         </div>
 
         <!-- Include Javascript -->
         <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript" charset="utf-8" language="javascript" src="js/hotel.js"></script>
-        
+
     </body>
 </html>
