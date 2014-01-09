@@ -94,8 +94,9 @@
                         </a>
                     </div>
                 </div>              
-                <div class="col-xs-6 droite">
+                
                     <div id="cadre">
+                        <div class="col-xs-6 droite">
                         <div id="map">
                             <p>Veuillez patienter pendant le chargement de la carte...</p>
                         </div>

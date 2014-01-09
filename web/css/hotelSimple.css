@@ -26,18 +26,20 @@ div.adresse
     
 }
 div.carrouselEtMap{
-    height: 20%
+    position: relative;
+    max-width: 100%;
+    height: 15%;
 }
 
-div.carrouselEtMap.gauche{
-    height: 20%
+div.carrouselEtMap.gauche
+{
+    position: relative;
+    max-width: 20%;
+    height: 15%;
 }
+
 
 div.caracteristiques
 {
     font-size: 14px;
 }
-
-
-
-

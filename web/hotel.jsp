@@ -21,11 +21,11 @@
         <link rel="stylesheet" href="lib/bootstrapNew/css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="lib/bootstrapNew/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="css/hotelSimple.css"/>
+        <link rel="stylesheet" href="lib/bootstrapNew/css/bootstrap-theme.min.css">       
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="lib/bootstrapNew/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/hotelSimple.css"/>
         
         <script>
 
