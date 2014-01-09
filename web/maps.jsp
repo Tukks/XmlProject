@@ -13,8 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="shortcut icon" type="image/ico" href="" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
-
+        <link rel="stylesheet" type="text/css" href="lib/bootstrapNew/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
         <title>Maps hotels</title>
     </head>

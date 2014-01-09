@@ -22,26 +22,22 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="lib/bootstrapNew/css/bootstrap-theme.min.css">       
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="lib/bootstrapNew/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/hotelSimple.css"/>
+        <link rel="stylesheet" type="text/css" href="css/hote.css"/>
         
         <script>
-
                     $('#myCarousel').carousel()
-
             })
         </script>
     </head>
     <body>
-
-
         <div class="container">
-            <div>
+           <div>
                 <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="maps.html">Maps</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li  class="active"><a href="maps.html">Maps</a></li>
                     <li><a href="#">SVG</a></li>
                 </ul>
                 <h3 class="muted">Project XML</h3>
