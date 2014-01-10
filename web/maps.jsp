@@ -22,9 +22,9 @@
         #map img {
             max-width: none;
         }
-        #infoBulle{
+        div#infoBulle{
             width:200px;
-            height:300px;
+            height:350px;
         }
     </style>
     <body>
