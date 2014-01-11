@@ -3,21 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Templates;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamSource;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
+import org.w3c.dom.Document;
 
 /**
  *
  * @author MoMo
  */
 public class ServletFOP extends HttpServlet {
+
+    public String XSLT_PATH = "svg/ex/xslfo.xsl";
+    public String XML_PATH = "svg/ex/sample.xml";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,25 +47,55 @@ public class ServletFOP extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+
+        ServletContext webApp = this.getServletContext();
+
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletFOP</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletFOP at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+
+            FopFactory fopFactory = FopFactory.newInstance();
+
+            //Setup a buffer to obtain the content length
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+            Templates templates = tFactory.newTemplates(new StreamSource(webApp.getRealPath(XSLT_PATH)));
+            // Create a transformer
+            Transformer transformer = templates.newTransformer();
+
+            // Get concrete implementation
+            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
+            // Need a parser that support namespaces
+            dFactory.setNamespaceAware(true);
+            // Create the parser
+            DocumentBuilder parser = dFactory.newDocumentBuilder();
+            // Parse the XML document
+            Document doc = parser.parse(webApp.getRealPath(XML_PATH));
+
+            //Setup FOP
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
+
+            //Make sure the XSL transformation's result is piped through to FOP
+            Result res = new SAXResult(fop.getDefaultHandler());
+
+            //Setup input
+            Source src = new DOMSource(doc);
+
+            //Start the transformation and rendering process
+            transformer.transform(src, res);
+
+            //Prepare response
+            response.setContentType("application/pdf");
+            response.setContentLength(out.size());
+
+            //Send content to Browser
+            response.getOutputStream().write(out.toByteArray());
+            response.getOutputStream().flush();
+        } catch (Exception ex) {
+            throw new ServletException(ex);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
