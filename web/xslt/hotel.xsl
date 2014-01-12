@@ -5,7 +5,7 @@
     Created on : 23 décembre 2013, 15:43
     Author     : Nicolas
     Description:
-        Purpose of transformation follows.
+        Affichage des informations d'un hotel
 -->
 <!-- Stack the columns on mobile by making one full-wclassth and the other half-wclassth -->
 
@@ -199,10 +199,15 @@
                         </div>
                         <div class="col-xs-2">
                             <h4>
-                                common_tags
+                                Adapté pour :
                             </h4>
                             <br/>
-                            <xsl:value-of select="common_tags"/>
+                            <xsl:for-each select="common_tags/common_tag">
+                                <li>
+                                    <xsl:value-of select="."/>
+                                </li>
+                            </xsl:for-each>
+                            
                         </div> 
                         <div class="col-xs-2">
                             <div class= "contact">               
@@ -238,7 +243,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <h4>
-                                Amenities
+                                Aménagements
                             </h4>
                             <br/>
                             <div class = "amenities">                       
