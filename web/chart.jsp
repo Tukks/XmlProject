@@ -22,39 +22,31 @@
 
 
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="js/graph.js"></script>
         <script type="text/javascript">
-            google.load("visualization", "1", {packages: ["corechart"]});
-            google.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Classification', 'Moyenne'],
-                    ['1 étoile', 5],
-                    ['2 étoiles', 30],
-                    ['3 étoiles', 41],
-                    ['4 étoiles', 21],
-                    ['5 étoiles', 2]
-                ]);
+            var classification = new Array();
+            <% int[] classificationJava = (int[]) session.getAttribute("classificationresult");
 
-                var options = {
-                    title: 'Classification des hotels',
-                    is3D: true,
-                };
+                for (int i = 0; i < classificationJava.length; i++) {%>
+            var tmp = '<%= classificationJava[i]%>';           //--> without this doesnt work
+            classification[<%= i%>] = tmp;
+            <%}
+            %>
 
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(data, options);
-            }
+            pie(classification);
         </script>
+
         <script type="text/javascript">
             google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['Classification', 'Moyenne'],
-                    ['1 étoile', 5],
-                    ['2 étoiles', 30],
-                    ['3 étoiles', 41],
-                    ['4 étoiles', 21],
-                    ['5 étoiles', 2]
+                    ['1 étoile', eval(classification[0])],
+                    ['2 étoiles', eval(classification[1])],
+                    ['3 étoiles', eval(classification[2])],
+                    ['4 étoiles', eval(classification[3])],
+                    ['5 étoiles', eval(classification[4])]
                 ]);
 
                 var options = {
@@ -68,14 +60,15 @@
         <script type="text/javascript">
             google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
+            var val = eval(text)
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['Classification', 'Moyenne'],
-                    ['1 étoile', 5],
-                    ['2 étoiles', 31],
-                    ['3 étoiles', 42],
-                    ['4 étoiles', 21],
-                    ['5 étoiles', 2]
+                    ['1 étoile', eval(classification[0])],
+                    ['2 étoiles', eval(classification[1])],
+                    ['3 étoiles', eval(classification[2])],
+                    ['4 étoiles', eval(classification[3])],
+                    ['5 étoiles', eval(classification[4])]
                 ]);
 
                 var options = {
@@ -100,24 +93,13 @@
             </div>
 
             <hr>
-            <div id="piechart" style="width: 900px; height: 500px;"></div>
+            <div id="pie_chart" style="width: 900px; height: 500px;"></div>
+            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'"/>
             <hr>
             <div id="chart_div" style="width: 900px; height: 500px;"></div>
             <hr>
             <div id="bar_div" style="width: 900px; height: 500px;"></div>
             <hr>
         </div>
-
-        <script language="javascript">
-            var classification = new Array();
-            <% float[] classificationJava = (float[]) session.getAttribute("classificationresult");
-
-                for (int i = 0; i < classificationJava.length; i++) {%>
-            var tmp = '<%= classificationJava[i]%>';           //--> without this doesnt work
-            classification[<%= i%>] = tmp;
-            <%}
-            %>
-        </script>
-
     </body>
 </html>

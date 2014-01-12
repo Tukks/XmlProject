@@ -30,7 +30,7 @@
             </div>
 
             <hr>
-            <form class="form-inline">
+            <form id="test" class="form-inline">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="row">
@@ -50,7 +50,6 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="max" class="control-label">Prix Maximum : </label>
-
                                 <input type="text" id="max" class="form-control" placeholder="Max">
                             </div>
                             <div class="col-xs-3">

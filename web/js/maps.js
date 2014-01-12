@@ -1,16 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/* Requete a sauvegarder : 
- * Pour latitude : 
- * for $var in doc('data/entries_hotels.xml') /entries/entry/latitude 
- * return data($var)
- * pour longitude :
- *for $var in doc('data/entries_hotels.xml') /entries/entry/longitude 
- * return data($var)
- */
 function init(latitude, longitude, hotelinfo, bool) {
     var centre = new google.maps.LatLng(43.69, 7.27); // Correspond au coordonnées central
 
@@ -36,8 +23,7 @@ function init(latitude, longitude, hotelinfo, bool) {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     var infowindow = new google.maps.InfoWindow({
-       
-  });
+    });
     var marker, i;
     for (i = 0; i < latitude.length; i++) {
 // Placer un point sur la carte
@@ -53,12 +39,13 @@ function init(latitude, longitude, hotelinfo, bool) {
                 return function() {
                     infowindow.setContent(htmlDecode(hotelinfo[i]));
                     infowindow.open(map, marker);
-                    
+
                 };
             })(marker, i));
         }
     }
 }
+
 function htmlDecode(input) {
     var e = document.createElement('p');
     e.innerHTML = input;

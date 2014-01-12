@@ -7,6 +7,7 @@ import java.io.IOException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author giuse_000
@@ -26,6 +27,42 @@ public class Query {
         try {
             // create query instance
             String input = "for $hotel in doc('data/entries_hotels.xml') return $hotel";
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+    }
+
+    public String pieChart() throws IOException {
+        String result = "";
+
+        try {
+            // create query instance
+            String input = "let $doc := doc('data/entries_hotels.xml')\n"
+                    + "return\n"
+                    + "let $total := count($doc//entry)\n"
+                    + "return\n"
+                    + "let $un := count($doc/entries/entry/standings_levels/standings_level[text() eq '1 étoile'])div $total * 100\n"
+                    + "let $deux := count($doc/entries/entry/standings_levels/standings_level[text() eq '2 étoiles'])div $total * 100\n"
+                    + "let $trois := count($doc/entries/entry/standings_levels/standings_level[text() eq '3 étoiles'])div $total * 100\n"
+                    + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
+                    + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
+                    + "return data(concat(round($un),\" \", round($deux),\" \", round($trois),\" \", round($quatre),\" \", round($cinq)))";
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -136,13 +173,14 @@ public class Query {
         return result;
 
     }
-public String coordoById(String id) throws IOException {
+
+    public String coordoById(String id) throws IOException {
         String result = "";
 
         try {
             // create query instance
             String input = "for $hotel in doc('data/entries_hotels.xml')/entries/entry where $hotel/ID = " + id + " return data(concat($hotel/longitude,\":\",$hotel/latitude))";
-          
+
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -164,6 +202,7 @@ public String coordoById(String id) throws IOException {
         return result;
 
     }
+
     public String infoHotel() throws IOException {
         String result = "";
 

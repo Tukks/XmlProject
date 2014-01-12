@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  */
 public class ServletChart extends HttpServlet {
 
+    public String CLASSIFICATION_RESULT = "classificationresult";
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,11 +40,12 @@ public class ServletChart extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            String classificationQuery = new Query().latitudeMaps();
+            String classificationQuery = new Query().pieChart();
+         
             String[] etoile = classificationQuery.split("\\s");
-            float[] classification = new float[etoile.length];
+            int[] classification = new int[etoile.length];
             for (int i = 0; i < etoile.length; i++) {
-                classification[i] = Float.parseFloat(etoile[i]);
+                classification[i] = Integer.parseInt(etoile[i]);
             }
 
             session.setAttribute("classificationresult", classification);
