@@ -20,6 +20,10 @@
         <servlet-name>ServletFOP</servlet-name>
         <servlet-class>Servlet.ServletFOP</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletChart</servlet-name>
+        <servlet-class>Servlet.ServletChart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletMaps</servlet-name>
         <url-pattern>/maps.html</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ServletFOP</servlet-name>
         <url-pattern>/ServletFOP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletChart</servlet-name>
+        <url-pattern>/chart.html</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

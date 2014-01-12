@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        <title>Hotel</title>
+        <title>SVG Chart</title>
 
         <link rel="shortcut icon" type="image/ico" href="">
 
@@ -49,7 +49,7 @@
             google.setOnLoadCallback(drawChart);
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                     ['Classification', 'Moyenne'],
+                    ['Classification', 'Moyenne'],
                     ['1 étoile', 5],
                     ['2 étoiles', 30],
                     ['3 étoiles', 41],
@@ -58,7 +58,7 @@
                 ]);
 
                 var options = {
-                    title: 'Company Performance'
+                    title: 'Classification des hotels'
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -66,35 +66,35 @@
             }
         </script>
         <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Classification', 'Moyenne'],
-          ['1 étoile',  5],
-          ['2 étoiles',  31],
-          ['3 étoiles',  42],
-          ['4 étoiles',  21],
-          ['5 étoiles',  2]
-        ]);
+            google.load("visualization", "1", {packages: ["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Classification', 'Moyenne'],
+                    ['1 étoile', 5],
+                    ['2 étoiles', 31],
+                    ['3 étoiles', 42],
+                    ['4 étoiles', 21],
+                    ['5 étoiles', 2]
+                ]);
 
-        var options = {
-          title: 'Company Performance',
-          vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
-        };
+                var options = {
+                    title: 'Classification des hotels',
+                    vAxis: {title: 'Class', titleTextStyle: {color: 'red'}}
+                };
 
-        var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
-        chart.draw(data, options);
-      }
-    </script>
+                var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
+                chart.draw(data, options);
+            }
+        </script>
     </head>
     <body>
         <div class="container">
             <div>
                 <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="maps.html">Maps</a></li>
-                    <li><a href="svg.html">SVG</a></li>
+                    <li><a href="maps.html">Maps</a></li>
+                    <li class="active"><a href="chart.html">SVG</a></li>
                 </ul>
                 <h3 class="text-muted">Project XML</h3>
             </div>
@@ -107,6 +107,17 @@
             <div id="bar_div" style="width: 900px; height: 500px;"></div>
             <hr>
         </div>
+
+        <script language="javascript">
+            var classification = new Array();
+            <% float[] classificationJava = (float[]) session.getAttribute("classificationresult");
+
+                for (int i = 0; i < classificationJava.length; i++) {%>
+            var tmp = '<%= classificationJava[i]%>';           //--> without this doesnt work
+            classification[<%= i%>] = tmp;
+            <%}
+            %>
+        </script>
 
     </body>
 </html>
