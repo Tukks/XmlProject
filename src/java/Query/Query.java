@@ -14,6 +14,11 @@ import java.io.IOException;
  */
 public class Query {
 
+    public static void main(String[] args) throws IOException {
+        Query q = new Query();
+        System.out.println(q.barChartXML());
+    }
+
     private final BaseXClient session;
 
     public Query() throws IOException {
@@ -63,6 +68,118 @@ public class Query {
                     + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
                     + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
                     + "return data(concat(round($un),\" \", round($deux),\" \", round($trois),\" \", round($quatre),\" \", round($cinq)))";
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+    }
+
+    public String pieChartXML() throws IOException {
+        String result = "";
+
+        try {
+            // create query instance
+            String input = "let $doc := doc('data/entries_hotels.xml')\n"
+                    + "return\n"
+                    + "let $total := count($doc//entry)\n"
+                    + "return\n"
+                    + "let $un := count($doc/entries/entry/standings_levels/standings_level[text() eq '1 étoile'])div $total * 100\n"
+                    + "let $deux := count($doc/entries/entry/standings_levels/standings_level[text() eq '2 étoiles'])div $total * 100\n"
+                    + "let $trois := count($doc/entries/entry/standings_levels/standings_level[text() eq '3 étoiles'])div $total * 100\n"
+                    + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
+                    + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
+                    + "return \n"
+                    + "<data>\n"
+                  
+                    + "<x>1 étoile</x><y>{round($un)}</y>\n"
+                    + "<x>2 étoiles</x><y>{round($deux)}</y>\n"
+                    + "<x>3 étoiles</x><y>{round($trois)}</y>\n"
+                    + "<x>4 étoiles</x><y>{round($quatre)}</y>\n"
+                    + "<x>5 étoiles</x><y>{round($cinq)}</y>\n"
+                    + "</data>\n";
+
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+    }
+
+    public String barChartXML() throws IOException {
+        String result = "";
+
+        try {
+            // create query instance
+            String input = "let $Doc := doc('data/entries_hotels.xml')\n"
+                    + "\n"
+                    + "return\n"
+                    + "let $Anglais := count($Doc/entries/entry/languages/language[text() eq 'Anglais'])\n"
+                    + "let $Allemand :=count($Doc/entries/entry/languages/language[text() eq 'Allemand'])\n"
+                    + "let $Espagnol :=count($Doc/entries/entry/languages/language[text() eq 'Espagnol'])\n"
+                    + "let $Italien :=count($Doc/entries/entry/languages/language[text() eq 'Italien'])\n"
+                    + "let $Russe :=count($Doc/entries/entry/languages/language[text() eq 'Russe'])\n"
+                    + "let $Français :=count($Doc/entries/entry/languages/language[text() eq 'Français'])\n"
+                    + "let $Néerlandais :=count($Doc/entries/entry/languages/language[text() eq 'Néerlandais'])\n"
+                    + "let $Arabe :=count($Doc/entries/entry/languages/language[text() eq 'Arabe'])\n"
+                    + "let $Finois :=count($Doc/entries/entry/languages/language[text() eq 'Finois'])\n"
+                    + "let $Portugais :=count($Doc/entries/entry/languages/language[text() eq 'Portugais'])\n"
+                    + "let $Lituanien :=count($Doc/entries/entry/languages/language[text() eq 'Lituanien'])\n"
+                    + "return\n"
+                    + "\n"
+                    + "<data>\n"
+                    + "<x>Anglais</x>\n"
+                    + "<x>Allemand</x>\n"
+                    + "<x>Espagnol</x>\n"
+                    + "<x>Italien</x>\n"
+                    + "<x>Russe</x>\n"
+                    + "<x>Francais</x>\n"
+                    + "<x>Néerlandais</x>\n"
+                    + "<x>Arabe</x>\n"
+                    + "<x>Finois</x>\n"
+                    + "<x>Portugais</x>\n"
+                    + "<x>Lituanien</x>\n"
+                    + "<y>{round($Anglais)}</y>\n"
+                    + "<y>{round($Allemand)}</y>\n"
+                    + "<y>{round($Espagnol)}</y>\n"
+                    + "<y>{round($Italien)}</y>\n"
+                    + "<y>{round($Russe)}</y>\n"
+                    + "<y>{round($Français)}</y>\n"
+                    + "<y>{round($Néerlandais)}</y>\n"
+                    + "<y>{round($Arabe)}</y>\n"
+                    + "<y>{round($Finois)}</y>\n"
+                    + "<y>{round($Portugais)}</y>\n"
+                    + "<y>{round($Lituanien)}</y>\n"
+                    + "</data>";
+
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -236,11 +353,5 @@ public class Query {
         this.session.close();
 
         return result;
-    }
-
-    public static void main(String[] args) throws IOException {
-        Query a = new Query();
-
-        a.infoHotel();
     }
 }

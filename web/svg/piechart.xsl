@@ -98,7 +98,6 @@ Redistribution and use, with or without modification, are permitted provided tha
 
         <!-- filter 'other' items -->
         <xsl:for-each select="$transformedData">
-            <xsl:sort select="." order="descending" data-type="number" />
             <xsl:if test="name()='item'">
                 <xsl:copy-of select="." />
             </xsl:if>

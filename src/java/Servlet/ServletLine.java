@@ -21,13 +21,14 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
+
 /**
  *
  * @author MoMo
  */
-public class ServletSVG extends HttpServlet {
+public class ServletLine extends HttpServlet {
 
-    public String XSLT_PATH = "svg/ex/bar.xsl";
+    public String XSLT_PATH = "svg/ex/line.xsl";
 
     public String XML_PATH = "svg/ex/sample.xml";
 
@@ -37,10 +38,11 @@ public class ServletSVG extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws javax.servlet.ServletException
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException {
+            throws ServletException, IOException {
         ServletContext webApp = this.getServletContext();
 
         try {
@@ -83,7 +85,6 @@ public class ServletSVG extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-      
     }
 
     /**

@@ -29,7 +29,7 @@ Redistribution and use, with or without modification, are permitted provided tha
         <xsl:param name="width" select="'100%'" />
         <xsl:param name="height" select="'100%'" />
         <xsl:param name="viewBoxWidth" select="300" />
-        <xsl:param name="viewBoxHeight" select="300" />
+        <xsl:param name="viewBoxHeight" select="150" />
         <xsl:param name="barWidth" select="15" />
         <xsl:param name="leftPadding" select="20" />
         <xsl:param name="rightPadding" select="10" />
@@ -49,7 +49,7 @@ Redistribution and use, with or without modification, are permitted provided tha
         </xsl:variable>
 
         <svg:svg version="1.1" width="{$width}" height="{$height}" preserveAspectRatio="xMinYMin" viewBox="0 0 {$viewBoxWidth} {$viewBoxHeight}"
-                         xmlns:svg="http://www.w3.org/2000/svg">
+                 xmlns:svg="http://www.w3.org/2000/svg">
             <xsl:if test="$xCount &gt; 0 and $yCount &gt; 0">
                 <xsl:variable name="yDataMin">
                     <xsl:call-template name="minimum">
@@ -125,7 +125,7 @@ Redistribution and use, with or without modification, are permitted provided tha
                 </xsl:call-template>
                 <svg:g transform="translate(0 {$totalHeight}) scale(1 -1)">
                     <svg:line x1="{$xMin}" y1="{$yStart}" x2="{$xMin}" y2="{$totalHeight}"
-                                                  stroke="black" stroke-width="2" />
+                              stroke="black" stroke-width="2" />
                 </svg:g>
 
                 <!-- Print bars -->
@@ -154,8 +154,8 @@ Redistribution and use, with or without modification, are permitted provided tha
                         </xsl:variable>
 
                         <svg:rect x="{$xMin+(position() - 1)*$barWidth}" y="{$y}" rx="2" ry="2"
-                                                          width="{$barWidth}" height="{$absoluteHeight}"
-                                                          fill="{$colour}" stroke="black" stroke-width="1" />
+                                  width="{$barWidth}" height="{$absoluteHeight}"
+                                  fill="{$colour}" stroke="black" stroke-width="1" />
                     </xsl:for-each>
                 </svg:g>
 
