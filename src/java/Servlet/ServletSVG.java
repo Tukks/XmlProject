@@ -27,9 +27,9 @@ import org.w3c.dom.Document;
  */
 public class ServletSVG extends HttpServlet {
 
-    public String XSLT_PATH = "svg/ex/use_osgr2svg.xsl";
+    public String XSLT_PATH = "svg/ex/bar.xsl";
 
-    public String XML_PATH = "svg/ex/gr_pie.xml";
+    public String XML_PATH = "svg/ex/sample.xml";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

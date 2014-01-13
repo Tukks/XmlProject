@@ -18,8 +18,8 @@ Redistribution and use, with or without modification, are permitted provided tha
 -->
 <colours>
     <colour index="0">violet</colour>
-    <colour index="1">orangered</colour>
-    <colour index="2">navajowhite</colour>
+    <colour index="1">#4444D3</colour>
+    <colour index="2">#6050DC</colour>
     <colour index="3">teal</colour>
     <colour index="4">limegreen</colour>
     <colour index="5">hotpink</colour>

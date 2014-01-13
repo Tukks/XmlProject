@@ -32,11 +32,9 @@
                 <h3 class="text-muted">Project XML</h3>
             </div>
 
+            <hr> 
+            <object type="image/svg+xml" data="http://localhost:8080/XMLproject/ServletSVG"></object>
             <hr>
-
-            <span>
-                <%=request.getAttribute("svgresult")%>
-            </span>
             
             <br />
             <div class="footer">
@@ -48,6 +46,6 @@
 
         <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
 
-        <script type="text/javascript" charset="utf-8" language="javascript" src="js/graph.js"></script>
+
     </body>
 </html>

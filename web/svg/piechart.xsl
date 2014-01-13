@@ -37,8 +37,8 @@ Redistribution and use, with or without modification, are permitted provided tha
         <xsl:param name="yData" />
         <xsl:param name="width" select="'100%'" />
         <xsl:param name="height" select="'100%'" />
-        <xsl:param name="viewBoxWidth" select="300" />
-        <xsl:param name="viewBoxHeight" select="300" />
+        <xsl:param name="viewBoxWidth" select="400" />
+        <xsl:param name="viewBoxHeight" select="130" />
         <xsl:param name="padding" select="10" />
         <xsl:param name="verticalSpan" select="100" />
         <xsl:param name="othersLabel" select="'Others'" />
