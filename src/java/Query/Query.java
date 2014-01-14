@@ -104,14 +104,13 @@ public class Query {
                     + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
                     + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
                     + "return \n"
-                    + "<data>\n"
-                  
+                    + "<pie>\n"                 
                     + "<x>1 étoile</x><y>{round($un)}</y>\n"
                     + "<x>2 étoiles</x><y>{round($deux)}</y>\n"
                     + "<x>3 étoiles</x><y>{round($trois)}</y>\n"
                     + "<x>4 étoiles</x><y>{round($quatre)}</y>\n"
                     + "<x>5 étoiles</x><y>{round($cinq)}</y>\n"
-                    + "</data>\n";
+                    + "</pie>\n";
 
             BaseXClient.Query query = session.query(input);
 
@@ -155,7 +154,7 @@ public class Query {
                     + "let $Lituanien :=count($Doc/entries/entry/languages/language[text() eq 'Lituanien'])\n"
                     + "return\n"
                     + "\n"
-                    + "<data>\n"
+                    + "<bar>\n"
                     + "<x>Anglais</x>\n"
                     + "<x>Allemand</x>\n"
                     + "<x>Espagnol</x>\n"
@@ -178,7 +177,7 @@ public class Query {
                     + "<y>{round($Finois)}</y>\n"
                     + "<y>{round($Portugais)}</y>\n"
                     + "<y>{round($Lituanien)}</y>\n"
-                    + "</data>";
+                    + "</bar>";
 
             BaseXClient.Query query = session.query(input);
 

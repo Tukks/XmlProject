@@ -1,22 +1,3 @@
-/* Form */
-$(document).ready(function() {
-    $("#test").submit(function() {	// à la soumission du formulaire						 
-        $.ajax({// fonction permettant de faire de l'ajax
-            type: "POST", // methode de transmission des données au fichier php
-            url: "index.html", // url du fichier php
-            data: "min=" + $("#min").val() + "&max=" + $("#max").val(), // données à transmettre
-            success: function(msg) { // si l'appel a bien fonctionné
-                alert("test")
-            }
-        });
-        return false; // permet de rester sur la même page à la soumission du formulaire
-    });
-});
-
-var select = document.getElementById("etoiles");
-var text = select.options[select.selectedIndex].text;
-
-
 /* Set the defaults for DataTables initialisation */
 $.extend(true, $.fn.dataTable.defaults, {
     "sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",

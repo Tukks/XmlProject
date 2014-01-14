@@ -5,7 +5,9 @@
  */
 package Servlet;
 
+import Query.Query;
 import java.io.IOException;
+import java.io.StringReader;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +28,7 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -34,7 +37,7 @@ import org.w3c.dom.Document;
 public class ServletFOP extends HttpServlet {
 
     public String XSLT_PATH = "svg/ex/xslfo.xsl";
-    public String XML_PATH = "svg/ex/sample.xml";
+    public String XML_NAME = "<data>";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,6 +54,8 @@ public class ServletFOP extends HttpServlet {
         ServletContext webApp = this.getServletContext();
 
         try {
+            XML_NAME += new Query().barChartXML()+ " " + new Query().pieChartXML() + "</data>";
+            
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
             FopFactory fopFactory = FopFactory.newInstance();
@@ -68,8 +73,10 @@ public class ServletFOP extends HttpServlet {
             dFactory.setNamespaceAware(true);
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
+            
+            InputSource is = new InputSource(new StringReader(XML_NAME));
             // Parse the XML document
-            Document doc = parser.parse(webApp.getRealPath(XML_PATH));
+            Document doc = parser.parse(is);
 
             //Setup FOP
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);

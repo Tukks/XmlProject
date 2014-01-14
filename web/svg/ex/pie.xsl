@@ -3,7 +3,7 @@
 	<xsl:import href="../piechart.xsl" />
 	<xsl:output method="xml" indent="yes" version="1.0" encoding="UTF-8" standalone="no"
         doctype-public="-//W3C//DTD SVG 1.1//EN" doctype-system="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" />
-	<xsl:template match="data">
+	<xsl:template match="pie">
 		<xsl:call-template name="pieChart">
 			<xsl:with-param name="xData" select="x" />
 			<xsl:with-param name="yData" select="y" />
