@@ -13,16 +13,15 @@
 
         <title>Hotel</title>
 
-        <link rel="shortcut icon" type="image/ico" href="">
-        
+        <link rel="shortcut icon" type="image/ico" href="">       
         <link rel="stylesheet" type="text/css" href="css/template.css"/>
         <link rel="stylesheet" type="text/css" href="css/hotel.css"/>
-        <link rel="stylesheet" type="text/css" href="css/map.css"/>
-        <link rel="stylesheet" type="text/css" href="css/hotelSimple.css"/>
+        <link rel="stylesheet" type="text/css" href="css/map.css"/>       
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
         <!-- Optional theme -->
-        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">       
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css"> 
+        <link rel="stylesheet" type="text/css" href="css/hotelSimple.css"/>
 
     </head>
     <body>

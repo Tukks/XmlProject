@@ -21,35 +21,45 @@ div.nom
     font-size: 28px;
     color: blue;   
 }
-div.adresse
-{
-    
-}
-div.carrouselEtMap{
-    position: relative;
-    max-width: 100%;
-    height: 15%;
-}
-
-div.carrouselEtMap.gauche
-{
-    position: relative;
-    max-width: 20%;
-    height: 15%;
-}
-
-
 div.caracteristiques
 {
     font-size: 14px;
 }
-
+div.carrouselEtMap
+{
+    position: inherit;
+}
+div.notes
+{
+    position: initial;
+}
 /** Maps **/
 #cadre{
     position:relative;width:990px;margin:auto;
+    height: 75%;
 }
 #cadre #map{
     width:600px;height:550px;margin:auto;
+}
+
+/* Flexible iFrame */
+
+.Flexible-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.Flexible-container iframe,   
+.Flexible-container object,  
+.Flexible-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /** DataTables **/
@@ -230,3 +240,4 @@ div.DTFC_LeftBodyWrapper tbody tr:first-child td {
 div.DTFC_LeftFootWrapper table {
     border-top: none;
 }
+

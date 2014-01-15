@@ -78,7 +78,7 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img>                                   
+                                <img style="height:auto; width:auto; max-width:500px; max-height:500px;">                                  
                                     <xsl:attribute name="src">
                                         <xsl:value-of select="images/image"/>
                                     </xsl:attribute>
@@ -119,7 +119,7 @@
             </div>           
             <br />
             <br />
-            <div class="row">
+            <div class="row notes">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-2">
