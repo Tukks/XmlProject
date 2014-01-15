@@ -37,7 +37,7 @@ import org.xml.sax.InputSource;
 public class ServletFOP extends HttpServlet {
 
     public String XSLT_PATH = "svg/ex/xslfo.xsl";
-    public String XML_NAME = "<data>";
+ 
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,8 +54,7 @@ public class ServletFOP extends HttpServlet {
         ServletContext webApp = this.getServletContext();
 
         try {
-            XML_NAME += new Query().lineChartXML() + " " + new Query().barChartXML()+ " " + new Query().pieChartXML() + "</data>";
-            
+           
             TransformerFactory tFactory = TransformerFactory.newInstance();
 
             FopFactory fopFactory = FopFactory.newInstance();
@@ -74,7 +73,7 @@ public class ServletFOP extends HttpServlet {
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
             
-            InputSource is = new InputSource(new StringReader(XML_NAME));
+            InputSource is = new InputSource(new StringReader(new Query().chartFOP()));
             // Parse the XML document
             Document doc = parser.parse(is);
 

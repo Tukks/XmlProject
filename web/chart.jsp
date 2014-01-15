@@ -34,13 +34,18 @@
 
             <hr> 
 
+            <div style="margin-top: 10px; font-size: 13px">
+                <%=request.getAttribute("htmlresult")%>
+            </div>
+            <hr>
+
             <object type="image/svg+xml" data="pie.html"></object>
             <hr>
             <object type="image/svg+xml" data="bar.html"></object>
             <hr>
             <object type="image/svg+xml" data="line.html"></object>
             <br />
-            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='http://localhost:8080/XMLproject/ServletFOP'"/>
+            <input class="form-control btn btn-primary" name="pdf" value="Télécharger en pdf" onclick="location = 'http://localhost:8080/XMLproject/ServletFOP'"/>
             <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
