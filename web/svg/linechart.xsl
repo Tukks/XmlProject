@@ -27,7 +27,7 @@ Redistribution and use, with or without modification, are permitted provided tha
     <xsl:template name="lineChart">
         <xsl:param name="xData" />
         <xsl:param name="yData" />
-        <xsl:param name="lineColour" select="'black'" />
+        <xsl:param name="lineColour" select="'red'" />
         <xsl:param name="pointColour" select="'red'" />
         <xsl:param name="width" select="'100%'" />
         <xsl:param name="height" select="'100%'" />

@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="shortcut icon" type="image/ico" href="" />
+        <link rel="shortcut icon" type="image/ico" href="css/hotel.jpg" />
         <link rel="stylesheet" type="text/css" href="css/template.css"/>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/hotel.css">
 
-        <title>SVG Hotel</title>
+        <title>Hotel Charts</title>
     </head>
     <style type="text/css">
 
@@ -40,7 +40,7 @@
             <hr>
             <object type="image/svg+xml" data="line.html"></object>
             <br />
-            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'" target="_BLANK"/>
+            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'"/>
             <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
