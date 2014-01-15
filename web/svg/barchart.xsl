@@ -133,7 +133,7 @@ Redistribution and use, with or without modification, are permitted provided tha
                     <xsl:for-each select="$yData">
                         <xsl:variable name="colour">
                             <xsl:call-template name="colour">
-                                <xsl:with-param name="index" select="position()" />
+                                <xsl:with-param name="index" select="1" />
                             </xsl:call-template>
                         </xsl:variable>
                         <xsl:variable name="height" select=".*$yScale" />

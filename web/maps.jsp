@@ -12,11 +12,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="shortcut icon" type="image/ico" href="" />
+        <link rel="shortcut icon" type="image/ico" href="css/hotel.jpg" />
         <link rel="stylesheet" type="text/css" href="css/template.css"/>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/map.css">
-        <title>Maps hotels</title>
+        <title>Hotel Maps</title>
     </head>
     <style type="text/css">
         #map img {

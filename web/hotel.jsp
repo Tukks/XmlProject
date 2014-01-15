@@ -11,9 +11,9 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        <title>Hotel</title>
+        <title>Hotel Details</title>
 
-        <link rel="shortcut icon" type="image/ico" href="">       
+        <link rel="shortcut icon" type="image/ico" href="css/hotel.jpg" />     
         <link rel="stylesheet" type="text/css" href="css/template.css"/>
         <link rel="stylesheet" type="text/css" href="css/hotel.css"/>
         <link rel="stylesheet" type="text/css" href="css/map.css"/>       
