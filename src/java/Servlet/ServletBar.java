@@ -60,8 +60,8 @@ public class ServletBar extends HttpServlet {
             dFactory.setNamespaceAware(true);
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
-            
-             InputSource is = new InputSource(new StringReader(new Query().barChartXML()));
+
+            InputSource is = new InputSource(new StringReader(new Query().barChartXML()));
             // Parse the XML document
             Document doc = parser.parse(is);
             // Get the XML source

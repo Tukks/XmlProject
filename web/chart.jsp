@@ -33,15 +33,15 @@
             </div>
 
             <hr> 
-            
+
             <object type="image/svg+xml" data="pie.html"></object>
-            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'" target="_blank"/>
-            
             <hr>
             <object type="image/svg+xml" data="bar.html"></object>
             <hr>
             <object type="image/svg+xml" data="line.html"></object>
-            <br /><br />
+            <br />
+            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'" target="_BLANK"/>
+            <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
             </div>

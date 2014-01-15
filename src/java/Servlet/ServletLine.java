@@ -5,7 +5,9 @@
  */
 package Servlet;
 
+import Query.Query;
 import java.io.IOException;
+import java.io.StringReader;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -29,8 +32,6 @@ import org.w3c.dom.Document;
 public class ServletLine extends HttpServlet {
 
     public String XSLT_PATH = "svg/ex/line.xsl";
-
-    public String XML_PATH = "svg/ex/sample.xml";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,8 +60,10 @@ public class ServletLine extends HttpServlet {
             dFactory.setNamespaceAware(true);
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
+            
+            InputSource is = new InputSource(new StringReader(new Query().lineChartXML()));
             // Parse the XML document
-            Document doc = parser.parse(webApp.getRealPath(XML_PATH));
+            Document doc = parser.parse(is);
             // Get the XML source
             Source xmlSource = new DOMSource(doc);
 
