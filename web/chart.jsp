@@ -40,7 +40,7 @@
             <hr>
             <object type="image/svg+xml" data="line.html"></object>
             <br />
-            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='fop.html'"/>
+            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='http://localhost:8080/XMLproject/ServletFOP'"/>
             <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
