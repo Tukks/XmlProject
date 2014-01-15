@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:e="http://ref.otcnice.com/webservice/" version="1.0">
 
     <xsl:output method="html"/>
@@ -20,7 +20,7 @@
                     <tr>
                         <td>
                             <html>
-                                <a href ="hotel.html?hotel={ID}"><xsl:value-of select="e:name_fr"/></a>
+                                <a href ="hotel.html?hotel={e:ID}"><xsl:value-of select="e:name_fr"/></a>
                             </html>                               
                         </td>
                         <td>
@@ -30,7 +30,7 @@
                             <xsl:value-of select="e:phone"/>
                         </td>
                         <td>
-                            <xsl:value-of select="e:standings_levels"/>
+                            <xsl:value-of select="e:standings_levels/e:standings_level"/>
                         </td>
                     </tr>
                 </xsl:for-each>
