@@ -65,7 +65,7 @@ public class ServletChart extends HttpServlet {
             // Create the parser
             DocumentBuilder parser = dFactory.newDocumentBuilder();
             //Input source
-            InputSource is = new InputSource(new StringReader(new Query().hotel()));
+            InputSource is = new InputSource(new StringReader(new Query().stats()));
             // Parse the XML document
             Document doc = parser.parse(is);
             //Create the stream that will receive the result of the transformation

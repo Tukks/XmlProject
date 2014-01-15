@@ -27,9 +27,9 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="maps.html">Maps</a></li>
-                    <li class="active"><a href="svg.html">SVG</a></li>
+                    <li class="active"><a href="chart.html">SVG</a></li>
                 </ul>
-                <h3 class="text-muted">Project XML</h3>
+               <h3 class="text-muted">Nice's Hotel</h3>
             </div>
 
             <hr> 

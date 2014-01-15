@@ -32,7 +32,7 @@
                     <li class="active"><a href="maps.html">Maps</a></li>
                     <li><a href="chart.html">SVG</a></li>
                 </ul>
-                <h3 class="text-muted">Project XML</h3>
+                <h3 class="text-muted">Nice's Hotel</h3>
             </div>
             
             <hr>
