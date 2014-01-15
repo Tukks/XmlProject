@@ -54,7 +54,7 @@ public class ServletFOP extends HttpServlet {
         ServletContext webApp = this.getServletContext();
 
         try {
-            XML_NAME += new Query().barChartXML()+ " " + new Query().pieChartXML() + "</data>";
+            XML_NAME += new Query().lineChartXML() + " " + new Query().barChartXML()+ " " + new Query().pieChartXML() + "</data>";
             
             TransformerFactory tFactory = TransformerFactory.newInstance();
 

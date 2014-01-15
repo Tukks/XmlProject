@@ -31,43 +31,8 @@ public class Query {
 
         try {
             // create query instance
-            String input = "for $hotel in doc('data/entries_hotels.xml') return $hotel";
-            BaseXClient.Query query = session.query(input);
-
-            // loop through all results
-            while (query.more()) {
-                result = result + query.next() + "\n";
-            }
-
-            // close query instance
-            query.close();
-
-        } catch (final IOException ex) {
-            // print exception
-            ex.printStackTrace();
-        }
-
-        // close session
-        this.session.close();
-
-        return result;
-    }
-
-    public String pieChart() throws IOException {
-        String result = "";
-
-        try {
-            // create query instance
-            String input = "let $doc := doc('data/entries_hotels.xml')\n"
-                    + "return\n"
-                    + "let $total := count($doc//entry)\n"
-                    + "return\n"
-                    + "let $un := count($doc/entries/entry/standings_levels/standings_level[text() eq '1 étoile'])div $total * 100\n"
-                    + "let $deux := count($doc/entries/entry/standings_levels/standings_level[text() eq '2 étoiles'])div $total * 100\n"
-                    + "let $trois := count($doc/entries/entry/standings_levels/standings_level[text() eq '3 étoiles'])div $total * 100\n"
-                    + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
-                    + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
-                    + "return data(concat(round($un),\" \", round($deux),\" \", round($trois),\" \", round($quatre),\" \", round($cinq)))";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $hotel in doc('data/entries_hotels.xml') return $hotel";
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -94,17 +59,18 @@ public class Query {
 
         try {
             // create query instance
-            String input = "let $doc := doc('data/entries_hotels.xml')\n"
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "let $doc := doc('data/entries_hotels.xml')\n"
                     + "return\n"
-                    + "let $total := count($doc//entry)\n"
+                    + "let $total := count($doc//e:entry)\n"
                     + "return\n"
-                    + "let $un := count($doc/entries/entry/standings_levels/standings_level[text() eq '1 étoile'])div $total * 100\n"
-                    + "let $deux := count($doc/entries/entry/standings_levels/standings_level[text() eq '2 étoiles'])div $total * 100\n"
-                    + "let $trois := count($doc/entries/entry/standings_levels/standings_level[text() eq '3 étoiles'])div $total * 100\n"
-                    + "let $quatre := count($doc/entries/entry/standings_levels/standings_level[text() eq '4 étoiles'])div $total * 100\n"
-                    + "let $cinq := count($doc/entries/entry/standings_levels/standings_level[text() eq '5 étoiles'])div $total * 100\n"
+                    + "let $un := count($doc/e:entries/e:entry/e:standings_levels/e:standings_level[text() eq '1 étoile'])div $total * 100\n"
+                    + "let $deux := count($doc/e:entries/e:entry/e:standings_levels/e:standings_level[text() eq '2 étoiles'])div $total * 100\n"
+                    + "let $trois := count($doc/e:entries/e:entry/e:standings_levels/e:standings_level[text() eq '3 étoiles'])div $total * 100\n"
+                    + "let $quatre := count($doc/e:entries/e:entry/e:standings_levels/e:standings_level[text() eq '4 étoiles'])div $total * 100\n"
+                    + "let $cinq := count($doc/e:entries/e:entry/e:standings_levels/e:standings_level[text() eq '5 étoiles'])div $total * 100\n"
                     + "return \n"
-                    + "<pie>\n"                 
+                    + "<pie>\n"
                     + "<x>1 étoile</x><y>{round($un)}</y>\n"
                     + "<x>2 étoiles</x><y>{round($deux)}</y>\n"
                     + "<x>3 étoiles</x><y>{round($trois)}</y>\n"
@@ -138,20 +104,20 @@ public class Query {
 
         try {
             // create query instance
-            String input = "let $Doc := doc('data/entries_hotels.xml')\n"
-                    + "\n"
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "let $Doc := doc('data/entries_hotels.xml')\n"
                     + "return\n"
-                    + "let $Anglais := count($Doc/entries/entry/languages/language[text() eq 'Anglais'])\n"
-                    + "let $Allemand :=count($Doc/entries/entry/languages/language[text() eq 'Allemand'])\n"
-                    + "let $Espagnol :=count($Doc/entries/entry/languages/language[text() eq 'Espagnol'])\n"
-                    + "let $Italien :=count($Doc/entries/entry/languages/language[text() eq 'Italien'])\n"
-                    + "let $Russe :=count($Doc/entries/entry/languages/language[text() eq 'Russe'])\n"
-                    + "let $Français :=count($Doc/entries/entry/languages/language[text() eq 'Français'])\n"
-                    + "let $Néerlandais :=count($Doc/entries/entry/languages/language[text() eq 'Néerlandais'])\n"
-                    + "let $Arabe :=count($Doc/entries/entry/languages/language[text() eq 'Arabe'])\n"
-                    + "let $Finois :=count($Doc/entries/entry/languages/language[text() eq 'Finois'])\n"
-                    + "let $Portugais :=count($Doc/entries/entry/languages/language[text() eq 'Portugais'])\n"
-                    + "let $Lituanien :=count($Doc/entries/entry/languages/language[text() eq 'Lituanien'])\n"
+                    + "let $Anglais := count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Anglais'])\n"
+                    + "let $Allemand :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Allemand'])\n"
+                    + "let $Espagnol :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Espagnol'])\n"
+                    + "let $Italien :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Italien'])\n"
+                    + "let $Russe :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Russe'])\n"
+                    + "let $Français :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Français'])\n"
+                    + "let $Néerlandais :=count($Doc/e:entries/e:entry/languages/e:language[text() eq 'Néerlandais'])\n"
+                    + "let $Arabe :=count($Doc/e:entries/e:entry/languages/e:language[text() eq 'Arabe'])\n"
+                    + "let $Finois :=count($Doc/e:entries/e:entry/languages/e:language[text() eq 'Finois'])\n"
+                    + "let $Portugais :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Portugais'])\n"
+                    + "let $Lituanien :=count($Doc/e:entries/e:entry/e:languages/e:language[text() eq 'Lituanien'])\n"
                     + "return\n"
                     + "\n"
                     + "<bar>\n"
@@ -200,13 +166,68 @@ public class Query {
         return result;
     }
 
+    public String lineChartXML() throws IOException {
+        String result = "";
+
+        try {
+            // create query instance
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";\n"
+                    + "\n"
+                    + "let $entries := doc('data/entries_hotels.xml')/e:entries\n"
+                    + "let $UneEtoile := $entries/e:entry[e:standings_levels/e:standings_level = '1 étoile']\n"
+                    + "let $prixUneEtoile :=  avg($UneEtoile/e:tariffs/e:tariff/e:min) \n"
+                    + "let $DeuxEtoile := $entries/e:entry[e:standings_levels/e:standings_level = '2 étoiles']\n"
+                    + "let $prixDeuxEtoile :=  avg($DeuxEtoile/e:tariffs/e:tariff/e:min) \n"
+                    + "let $TroisEtoile := $entries/e:entry[e:standings_levels/e:standings_level = '3 étoiles']\n"
+                    + "let $prixTroisEtoile :=  avg($TroisEtoile/e:tariffs/e:tariff/e:min) \n"
+                    + "let $QuattreEtoile := $entries/e:entry[e:standings_levels/e:standings_level = '4 étoiles']\n"
+                    + "let $prixQuattreEtoile :=  avg($QuattreEtoile/e:tariffs/e:tariff/e:min) \n"
+                    + "let $CinqEtoile := $entries/e:entry[e:standings_levels/e:standings_level = '5 étoiles']\n"
+                    + "let $prixCinqEtoile :=  avg($CinqEtoile/e:tariffs/e:tariff/e:min) \n"
+                    + "return\n"
+                    + "<line>\n"
+                    + "<x>5 étoiles</x>\n"
+                    + "<x>4 étoiles</x>\n"
+                    + "<x>3 étoiles</x>\n"
+                    + "<x>2 étoiles</x>\n"
+                    + "<x>1 étoile</x>\n"
+                    + "<y>{$prixUneEtoile}</y>\n"
+                    + "<y>{$prixDeuxEtoile}</y>\n"
+                    + "<y>{$prixTroisEtoile}</y>\n"
+                    + "<y>{$prixQuattreEtoile}</y>\n"
+                    + "<y>{$prixCinqEtoile}</y>\n"
+                    + "\n"
+                    + "</line>";
+
+            BaseXClient.Query query = session.query(input);
+
+            // loop through all results
+            while (query.more()) {
+                result = result + query.next() + "\n";
+            }
+
+            // close query instance
+            query.close();
+
+        } catch (final IOException ex) {
+            // print exception
+            ex.printStackTrace();
+        }
+
+        // close session
+        this.session.close();
+
+        return result;
+    }
+
     public String latitudeMaps() throws IOException {
         String result = "";
 
         try {
             // create query instance
-            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry/latitude return data($var)";
-            //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $var in doc('data/entries_hotels.xml') /e:entries/e:entry/e:latitude return data($var)";
+      
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -233,8 +254,9 @@ public class Query {
 
         try {
             // create query instance
-            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
-            //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $var in doc('data/entries_hotels.xml') /e:entries/e:entry/e:longitude return data($var)";
+          
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -267,7 +289,8 @@ public class Query {
 
         try {
             // create query instance
-            String input = "for $hotel in doc('data/entries_hotels.xml')/entries/entry where $hotel/ID = " + id + " return $hotel";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $hotel in doc('data/entries_hotels.xml')/e:entries/e:entry where $hotel/e:ID = " + id + " return $hotel";
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
@@ -295,7 +318,8 @@ public class Query {
 
         try {
             // create query instance
-            String input = "for $hotel in doc('data/entries_hotels.xml')/entries/entry where $hotel/ID = " + id + " return data(concat($hotel/longitude,\":\",$hotel/latitude))";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $hotel in doc('data/entries_hotels.xml')/e:entries/e:entry where $hotel/e:ID = " + id + " return data(concat($hotel/e:longitude,\":\",$hotel/e:latitude))";
 
             BaseXClient.Query query = session.query(input);
 
@@ -324,9 +348,10 @@ public class Query {
 
         try {
             // create query instance
-            String input = "for $var in doc('data/entries_hotels.xml') /entries/entry where not(empty($var/longitude)) and  not(empty($var/latitude))"
-                    + "return data(concat('<div id=infoBulle><p><b>', $var/name_fr,'</b><br /><img src=',subsequence($var/images/image,1,1),' width=200 height=200><br />', $var/address/address_line1, $var/address/address_line2,'<br />',$var/address/zip,'<br />', $var/address/city,'<br /> Telephone ',$var/phone,'<br /><a href=./hotel.html?hotel=',$var/ID,'>More info</a></p></div>', '#'))";
-            //for $var in doc('data/entries_hotels.xml') /entries/entry/longitude return data($var)";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $var in doc('data/entries_hotels.xml') /e:entries/e:entry where not(empty($var/e:longitude)) and  not(empty($var/e:latitude))"
+                    + "return data(concat('<div id=infoBulle><p><b>', $var/e:name_fr,'</b><br /><img src=',subsequence($var/e:images/e:image,1,1),' width=200 height=200><br />', $var/e:address/e:address_line1, $var/e:address/e:address_line2,'<br />',$var/e:address/e:zip,'<br />', $var/e:address/e:city,'<br /> Telephone ',$var/e:phone,'<br /><a href=./hotel.html?hotel=',$var/e:ID,'>More info</a></p></div>', '#'))";
+  
             BaseXClient.Query query = session.query(input);
             // loop through all results
             int i = 0;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:e="http://ref.otcnice.com/webservice/" version="1.0">
 
     <xsl:output method="html"/>
 
@@ -16,21 +16,21 @@
                 </tr>
             </thead>
             <tbody>
-                <xsl:for-each select="entries/entry">
+                <xsl:for-each select="e:entries/e:entry">
                     <tr>
                         <td>
                             <html>
-                                <a href ="hotel.html?hotel={ID}"><xsl:value-of select="name_fr"/></a>
+                                <a href ="hotel.html?hotel={ID}"><xsl:value-of select="e:name_fr"/></a>
                             </html>                               
                         </td>
                         <td>
-                            <xsl:value-of select="address"/>
+                            <xsl:value-of select="e:address"/>
                         </td>
                         <td>
-                            <xsl:value-of select="phone"/>
+                            <xsl:value-of select="e:phone"/>
                         </td>
                         <td>
-                            <xsl:value-of select="standings_levels"/>
+                            <xsl:value-of select="e:standings_levels"/>
                         </td>
                     </tr>
                 </xsl:for-each>
