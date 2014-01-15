@@ -289,8 +289,8 @@ public class Query {
 
         try {
             // create query instance
-            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";\n" +
-"for $hotel in doc('data/entries_hotels.xml')/e:entries/e:entry where $hotel/e:ID = \"1024\" return $hotel";
+            String input = "declare namespace e = \"http://ref.otcnice.com/webservice/\";"
+                    + "for $hotel in doc('data/entries_hotels.xml')/e:entries/e:entry where $hotel/e:ID = " + id + " return $hotel";
             BaseXClient.Query query = session.query(input);
 
             // loop through all results
