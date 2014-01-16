@@ -28,7 +28,7 @@ Redistribution and use, with or without modification, are permitted provided tha
         <xsl:param name="yData" />
         <xsl:param name="width" select="'100%'" />
         <xsl:param name="height" select="'100%'" />
-        <xsl:param name="viewBoxWidth" select="300" />
+        <xsl:param name="viewBoxWidth" select="420" />
         <xsl:param name="viewBoxHeight" select="160" />
         <xsl:param name="barWidth" select="15" />
         <xsl:param name="leftPadding" select="20" />
