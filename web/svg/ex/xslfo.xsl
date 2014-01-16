@@ -12,15 +12,28 @@
            
             <fo:page-sequence master-reference="portrait">
                 <fo:flow flow-name="xsl-region-body">
+                    <fo:block font-style="normal"
+                              font-weight="bold"
+                              text-align="center"
+                              font-size="12px">
+                        Prix moyen des chambres
+                    </fo:block>
+                
                     <fo:block>
                         <fo:instream-foreign-object>
                             <xsl:call-template name="lineChart">
                                 <xsl:with-param name="xData" select="/data/line/x"/>
                                 <xsl:with-param name="yData" select="/data/line/y"/>
                                 <xsl:with-param name="width" select="'15cm'"/>
-                                <xsl:with-param name="height" select="'9cm'"/>
+                                <xsl:with-param name="height" select="'8cm'"/>
                             </xsl:call-template>
                         </fo:instream-foreign-object>
+                    </fo:block>
+                    <fo:block font-style="normal"
+                              font-weight="bold"
+                              text-align="center"
+                              font-size="12px">
+                        Nombre de langues parlées
                     </fo:block>
                     <fo:block>
                         <fo:instream-foreign-object>
@@ -28,9 +41,15 @@
                                 <xsl:with-param name="xData" select="/data/bar/x"/>
                                 <xsl:with-param name="yData" select="/data/bar/y"/>
                                 <xsl:with-param name="width" select="'15cm'"/>
-                                <xsl:with-param name="height" select="'9cm'"/>
+                                <xsl:with-param name="height" select="'8cm'"/>
                             </xsl:call-template>
                         </fo:instream-foreign-object>
+                    </fo:block>
+                    <fo:block font-style="normal"
+                              font-weight="bold"
+                              text-align="center"
+                              font-size="12px">
+                        Pourcentages des hotels par rapport à la classification
                     </fo:block>
                     <fo:block>
                         <fo:instream-foreign-object>

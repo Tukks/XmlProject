@@ -38,14 +38,16 @@
                 <%=request.getAttribute("htmlresult")%>
             </div>
             <hr>
-
+            <h4>Pourcentages des hotels par rapport aux étoiles</h4>
             <object type="image/svg+xml" data="pie.html"></object>
             <hr>
+            <h4>Nombre de langues parlées</h4>
             <object type="image/svg+xml" data="bar.html"></object>
             <hr>
+            <h4>Prix moyen des chambres</h4>
             <object type="image/svg+xml" data="line.html"></object>
             <br />
-            <input class="form-control btn btn-primary" name="pdf" value="Télécharger en pdf" onclick="location = 'http://localhost:8080/XMLproject/ServletFOP'"/>
+            <input class="form-control btn btn-primary" name="pdf" value="Télécharger en PDF" onclick="location = 'http://localhost:8080/XMLproject/ServletFOP'"/>
             <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>

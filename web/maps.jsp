@@ -26,6 +26,8 @@
             width:200px;
             height:350px;
         }
+        #cadre{position:relative;width:100%;margin:auto;}
+        #cadre #map{width:100%;height:500px;margin:auto;}
     </style>
     <body>
         <div class="container">
@@ -37,7 +39,7 @@
                     <li  class="active"><a href="maps.html">Maps</a></li>
                     <li><a href="chart.html">SVG</a></li>
                 </ul>
-                <h3 class="text-muted">Nice's Hotel</h3>
+                <h3 class="text-muted">Project XML</h3>
             </div>
 
             <hr>

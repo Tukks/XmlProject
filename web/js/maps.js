@@ -31,8 +31,8 @@ function init(latitude, longitude, hotelinfo, bool) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(latitude[i], longitude[i]),
             map: map,
-            title: "Les hotels"
-                    //icon: "marker.gif" // Chemin de l'image du marqueur
+            title: "Les hotels",
+           icon: 'js/icon_hotel.png' // Chemin de l'image du marqueur
         });
         if (bool == 1) { // Créer une info-bulle
             google.maps.event.addListener(marker, 'click', (function(marker, i) {

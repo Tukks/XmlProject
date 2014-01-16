@@ -16,11 +16,6 @@ public class Query {
 
     private final BaseXClient session;
 
-    public static void main(String[] args) throws IOException {
-        Query q = new Query();
-        System.out.println(q.chartFOP());
-    }
-
     public Query() throws IOException {
         super();
         this.session = new BaseXClient("localhost", 1984, "admin", "admin");
