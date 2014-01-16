@@ -345,18 +345,6 @@
                             <th>
                                 Nombre de suites
                             </th>
-                            <th>
-                                Nombre de studios
-                            </th>
-                            <th>
-                                Nombre d'appartements
-                            </th>
-                            <th>
-                                Nombre de chambres pour handicapées
-                            </th>
-                            <th>
-                                Spécifiques
-                            </th>
                             
                         </tr>
                         <xsl:for-each select="e:living">
@@ -380,7 +368,22 @@
                                     <xsl:value-of select="e:suite_count"/>
                                 </td>
                             
-                             
+                      </tr>
+                      <tr>
+                           <th>
+                                Nombre de studios
+                            </th>
+                            <th>
+                                Nombre d'appartements
+                            </th>
+                            <th>
+                                Nombre de chambres pour handicapées
+                            </th>
+                            <th>
+                                Spécifiques
+                            </th>
+                      </tr>
+                      <tr>       
                                 <td>
                                     <xsl:value-of select="e:studio_count"/>
                                 </td>

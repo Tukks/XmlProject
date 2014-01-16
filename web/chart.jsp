@@ -27,12 +27,17 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="maps.html">Maps</a></li>
-                    <li class="active"><a href="svg.html">SVG</a></li>
+                    <li class="active"><a href="chart.html">SVG</a></li>
                 </ul>
-                <h3 class="text-muted">Project XML</h3>
+               <h3 class="text-muted">Nice's Hotel</h3>
             </div>
 
             <hr> 
+
+            <div style="margin-top: 10px; font-size: 13px">
+                <%=request.getAttribute("htmlresult")%>
+            </div>
+            <hr>
 
             <object type="image/svg+xml" data="pie.html"></object>
             <hr>
@@ -40,7 +45,7 @@
             <hr>
             <object type="image/svg+xml" data="line.html"></object>
             <br />
-            <input class="form-control btn btn-info" name="pdf" value="Télécharger en pdf" onclick="location='http://localhost:8080/XMLproject/ServletFOP'"/>
+            <input class="form-control btn btn-primary" name="pdf" value="Télécharger en pdf" onclick="location = 'http://localhost:8080/XMLproject/ServletFOP'"/>
             <br />
             <div class="footer">
                 <p>&copy; MIAGE 2013</p>
