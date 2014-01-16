@@ -33,6 +33,11 @@ div.notes
 {
     position: initial;
 }
+div.amenities
+{   
+    max-height: 300px;
+    overflow: auto;
+}
 /** Maps **/
 #cadre{
     position:relative;width:990px;margin:auto;
